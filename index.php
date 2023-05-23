@@ -14,9 +14,7 @@
 </head>
 
 <body class="bg-main-purple">
-
-
-
+  
   <script src="bootstrap/js/bootstrap.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>

@@ -1,0 +1,76 @@
+.bg-main-purple {
+  background-color: #4e31aa;
+  color: #fcfcfc;
+}
+
+.bg-secondary-purple {
+  background-color: #645dbc;
+  color: #fcfcfc;
+}
+
+.bg-nearly-white {
+  background-color: #fcfcfc;
+}
+
+.bg-main-grey {
+  background-color: #dbdbdb;
+}
+
+.bg-dark-grey {
+  background-color: #757575;
+}
+
+.bg-dark-purple {
+  background-color: #383746;
+}
+
+.text-main-purple {
+  color: #4e31aa;
+}
+
+.text-secondary-purple {
+  color: #645dbc;
+}
+
+.text-nearly-white {
+  color: #fcfcfc;
+}
+
+.text-main-grey {
+  color: #dbdbdb;
+}
+
+.text-dark-grey {
+  color: #757575;
+}
+
+.text-dark-purple {
+  color: #383746;
+}
+
+.border-purple {
+  border: 1px solid #4e31aa;
+}
+
+.btn-purple {
+  background-color: #4e31aa;
+  color: #fcfcfc;
+  border: 1px solid #4e31aa;
+}
+
+.btn-light-purple {
+  background-color: #fcfcfc;
+  color: #4e31aa;
+  border: 1px solid #4e31aa;
+}
+
+.btn-light-purple:hover {
+  background-color: #dbdbdb;
+  color: #4e31aa;
+  border: 1px solid #4e31aa;
+}
+
+.btn-purple:hover {
+  background-color: #383746;
+  color: #fcfcfc;
+}

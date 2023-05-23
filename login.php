@@ -20,10 +20,10 @@
     </a>
   </div>
   <main class="container-fluid vh-100 bg-nearly-white d-flex align-items-center justify-content-center">
-    <div class="text-dark p-4" style="width: 400px;">
+    <div class="shadow rounded-3 text-dark p-4" style="width: 400px;">
       <div class="text-center pb-2">
         <h1 class="fw-bold">Login</h1>
-        <p class="text-secondary">Tingkatkan personal branding dan temukan projek terbaikmu.</p>
+        <p class="text-secondary">Tingkatkan personal branding dan temukan projek terbaikmu</p>
       </div>
       <form action="" method="post">
         <div>

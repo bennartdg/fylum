@@ -9,20 +9,16 @@
   <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
   <link rel="stylesheet" href="bootstrap/css/main.css" />
   <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://kit.fontawesome.com/61f8d3e11d.js" crossorigin="anonymous"></script>
   <title>FyLum</title>
 </head>
 
 <body class="bg-main-purple">
-  <div class="position-absolute bottom-0 start-50 translate-middle">
-    <a href="index.php">
-      <img src="assets/images/icons/fylum.png" alt="" height="40px">
-    </a>
-  </div>
+
 
 
   <script src="bootstrap/js/bootstrap.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

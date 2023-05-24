@@ -40,7 +40,7 @@
       </div>
       <section class="container w-75 d-flex justify-content-center position-absolute start-50 translate-middle">
         <div class="row">
-          <div class="col-lg-4 col-sm-4 p-2">
+          <div class="card-scale col-lg-4 col-sm-4 p-2">
             <div class="d-flex flex-row bg-light shadow text-dark align-items-center text-center">
               <div class="w-50">
                 <img class="" src="assets/images/contents/graphicdesigner.jpg" alt="" width="100%">
@@ -52,7 +52,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-sm-4 p-2">
+          <div class="card-scale col-lg-4 col-sm-4 p-2">
             <div class="d-flex flex-row bg-light shadow text-dark align-items-center text-center">
               <div class="w-50">
                 <img class="" src="assets/images/contents/architecture.jpg" alt="" width="100%">
@@ -64,7 +64,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-sm-4 p-2">
+          <div class="card-scale col-lg-4 col-sm-4 p-2">
             <div class="d-flex flex-row bg-light shadow text-dark align-items-center text-center">
               <div class="w-50">
                 <img class="" src="assets/images/contents/photographer.jpg" width="100%">

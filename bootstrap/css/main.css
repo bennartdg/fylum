@@ -126,3 +126,15 @@
   color: #383746;
   transition: all 0.3s ease-in-out;
 }
+
+.card-scale {
+  scale: 0.9;
+  transition: 500ms;
+  cursor: default;
+}
+
+.card-scale:hover {
+  scale: 1;
+  transition: 500ms;
+  cursor: default;
+}

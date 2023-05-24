@@ -3,8 +3,6 @@ session_start();
 include('server/connection.php');
 
 if (isset($_SESSION['logged_in'])) {
-  
-  
 }
 
 if (isset($_POST['login_btn'])) {
@@ -40,11 +38,11 @@ if (isset($_POST['login_btn'])) {
         $_SESSION['logged_in'] = true;
 
         header('location: ancients/index.php');
-      } else if($account_level == 'fyler') {
+      } else if ($account_level == 'fyler') {
         $q_fyler = "SELECT * FROM fylers WHERE account_email = '$email'";
         $r_fyler = mysqli_query($conn, $q_fyler);
 
-        $row= mysqli_fetch_assoc($r_fyler);
+        $row = mysqli_fetch_assoc($r_fyler);
 
         $_SESSION['account_id'] = $account_id;
         $_SESSION['account_email'] = $account_email;
@@ -64,6 +62,27 @@ if (isset($_POST['login_btn'])) {
         $_SESSION['logged_in'] = true;
 
         header('location: fylers/index.php');
+      } else {
+        $q_king = "SELECT * FROM kings WHERE account_email = '$email'";
+        $r_king = mysqli_query($conn, $q_king);
+
+        $row = mysqli_fetch_assoc($r_king);
+
+        $_SESSION['account_id'] = $account_id;
+        $_SESSION['account_email'] = $account_email;
+        $_SESSION['account_password'] = $account_password;
+        $_SESSION['account_level'] = $account_level;
+
+        $_SESSION['king_id'] = $row['king_id'];
+        $_SESSION['king_name'] = $row['king_name'];
+        $_SESSION['king_desc'] = $row['king_desc'];
+        $_SESSION['king_add'] = $row['king_iadd'];
+        $_SESSION['king_balance'] = $row['king_balance'];
+        $_SESSION['king_photo'] = $row['king_photo'];
+
+        $_SESSION['logged_in'] = true;
+
+        header('location: kingdoms/index.php');
       }
     } else {
       header('location: login.php?error=Could not verify your account!');

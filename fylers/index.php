@@ -2,7 +2,7 @@
 session_start();
 include('../server/connection.php');
 
-if(isset($_SESSION['logged_in'])){
+if (isset($_SESSION['logged_in'])) {
   $account_id = $_SESSION['account_id'];
   $account_email = $_SESSION['account_email'];
   $account_password = $_SESSION['account_password'];
@@ -19,8 +19,8 @@ if(isset($_SESSION['logged_in'])){
   $fyler_project = $_SESSION['fyler_project'];
 }
 
-if(isset($_GET['logout'])) {
-  if(isset($_SESSION['logged_in'])){
+if (isset($_GET['logout'])) {
+  if (isset($_SESSION['logged_in'])) {
     unset($_SESSION['logged_in']);
     unset($_SESSION['account_id']);
     unset($_SESSION['fyler_id']);
@@ -49,16 +49,14 @@ if(isset($_GET['logout'])) {
 
 <body class="bg-main-purple">
   <div class="bg-light text-dark vh-100">
-    <a class="link-purple" href="index.php?logout=1"name='logout'>Logout</a>
-    
+    <a class="link-purple" href="index.php?logout=1" name='logout'>Logout</a>
 
-
-    <?= $account_id?>
-    <?= $account_email?>
-    <?= $account_password?>
-    <?= $account_level?>
-    <?= $fyler_id?>
-    <?= $_SESSION['logged_in']?>
+    <?= $account_id ?>
+    <?= $account_email ?>
+    <?= $account_password ?>
+    <?= $account_level ?>
+    <?= $fyler_id ?>
+    <?= $_SESSION['logged_in'] ?>
   </div>
 
   <script src="bootstrap/js/bootstrap.js"></script>

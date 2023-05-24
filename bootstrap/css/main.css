@@ -58,6 +58,13 @@
   border: 1px solid #4e31aa;
 }
 
+.btn-purple:hover {
+  background-color: #383746;
+  color: #fcfcfc;
+  border: 1px solid #383746;
+  transition: all 0.3s ease-in-out;
+}
+
 .btn-light-purple {
   background-color: #fcfcfc;
   color: #4e31aa;
@@ -68,9 +75,29 @@
   background-color: #dbdbdb;
   color: #4e31aa;
   border: 1px solid #4e31aa;
+  transition: all 0.3s ease-in-out;
 }
 
-.btn-purple:hover {
-  background-color: #383746;
+.btn-circle {
+  width: 40px;
+  height: 40px;
+}
+
+.link-purple {
+  color: #4e31aa;
+  text-decoration: none;
+}
+
+.link-purple:hover {
+  color: #383746;
+}
+
+.link-light-purple {
   color: #fcfcfc;
+  text-decoration: none;
+}
+
+.link-light-purple:hover {
+  color: #645dbc;
+  transition: all 0.3s ease-in-out;
 }

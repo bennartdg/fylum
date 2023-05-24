@@ -101,3 +101,13 @@
   color: #645dbc;
   transition: all 0.3s ease-in-out;
 }
+
+.link-secondary-purple {
+  color: #645dbc;
+  text-decoration: none;
+}
+
+.link-secondary-purple:hover {
+  color: #383746;
+  transition: all 0.3s ease-in-out;
+}

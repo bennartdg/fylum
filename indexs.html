@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="assets/images/icons/fy_main.png">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+  <link rel="stylesheet" href="bootstrap/css/main.css" />
+  <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/61f8d3e11d.js" crossorigin="anonymous"></script>
+  <title>FyLum</title>
+</head>
+
+<body class="bg-main-purple">
+  <header>
+    <nav class="navbar p-0 fixed-top">
+      <div class="container-fluid w-75 py-4">
+        <a class="navbar-brand" href="">
+          <img src="assets/images/icons/fylum.png" height="40px" alt="">
+        </a>
+        <div class=" fs-4">
+          <a class="link-purple mx-3" href="login.php">Login</a>
+          <a class="link-secondary-purple" href="" data-bs-toggle="modal"
+            data-bs-target="#modalRegisterPick">Register</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="container-fluid p-0 m-0">
+      <img class="object-fit-cover p-0" src="assets/images/backgrounds/laptop.jpg" height="750px" width="100%" alt="">
+      <div class="position-absolute w-25 top-50 end-0 ">
+        <h1 class="fw-bold text-main-purple">START YOUR JOURNEY HERE.</h1>
+        <div class="">
+          <a class="btn btn-light-purple bg-transparent m-2" href="registerFyler.php">JOIN AS FYLER</a>
+          <a class="btn btn-purple m-2" href="registerKing.php">RECRUIT A FYLER</a>
+        </div>
+      </div>
+      <section class="container d-flex justify-content-center">
+        <div class="row">
+          <div class="col-lg-4 col-sm-12 d-flex flex-row bg-light text-dark align-items-center text-center p-0 g-3">
+            <div>
+              <img class="" src="assets/images/contents/card1.png" alt="" width="100%">
+            </div>
+            <div>
+              <h3>Product Designer</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum nihil culpa distinctio nostrum amet
+                modi!</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-12 d-flex flex-row bg-light text-dark align-items-center text-center p-0 g-3">
+            <div>
+              <img class="" src="assets/images/contents/card1.png" alt="" width="100%">
+            </div>
+            <div>
+              <h3>Product Designer</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum nihil culpa distinctio nostrum amet
+                modi!</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-12 d-flex flex-row bg-light text-dark align-items-center text-center p-0 g-3">
+            <div>
+              <img class="" src="assets/images/contents/card1.png" alt="" width="100%">
+            </div>
+            <div>
+              <h3>Product Designer</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum nihil culpa distinctio nostrum amet
+                modi!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Modal Register Pick Start -->
+  <div class="modal fade" id="modalRegisterPick" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body text-main-purple text-center">
+          <h1 class="text-secondary" style="font-size: 4em"><i class="fa-solid fa-question"></i></h1>
+          <h1 class="">Register Sebagai</h1>
+          <p class="text-secondary">Pilih King untuk Rekrut Freelancer, Fyler sebagai Freelancer</p>
+          <div>
+            <a class="btn btn-purple" href="registerKing.php">King</a>
+            <a class="btn btn-purple" href="registerFyler.php">Fyler</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Register Pick End -->
+
+  <footer>
+
+  </footer>
+  <script src="bootstrap/js/bootstrap.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>

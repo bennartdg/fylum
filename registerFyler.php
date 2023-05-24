@@ -67,7 +67,7 @@
           <p class="text-center mt-4">Sudah memiliki akun? <a class="text-main-purple text-decoration-none" href="login.php">Login Sekarang</a></p>
         </form>
       </div>
-    </div>
+    </div>  
     <div class="fixed-bottom text-center mb-3">
       <a href="index.php">
         <img src="assets/images/icons/fylum.png" alt="" height="40px">

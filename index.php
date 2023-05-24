@@ -16,8 +16,8 @@
 
 <body class="bg-main-purple">
   <header>
-    <nav class="navbar p-0 fixed-top">
-      <div class="container-fluid w-75 py-3">
+    <nav class="navbar p-0 fixed-top bg-blur">
+      <div class="container-fluid w-75 py-2">
         <a class="navbar-brand" href="">
           <img src="assets/images/icons/fylum.png" height="40px" alt="">
         </a>
@@ -34,7 +34,7 @@
       <div class="position-absolute w-25 top-50 end-0 ">
         <h1 class="fw-bold text-main-purple">START YOUR JOURNEY TODAY.</h1>
         <div class="">
-          <a class="btn btn-light-purple bg-transparent m-2" href="registerFyler.php">JOIN AS FYLER</a>
+          <a class="btn btn-transparent-purple m-2" href="registerFyler.php">JOIN AS FYLER</a>
           <a class="btn btn-purple m-2" href="registerKing.php">RECRUIT A FYLER</a>
         </div>
       </div>
@@ -43,33 +43,35 @@
           <div class="col-lg-4 col-sm-4 p-2">
             <div class="d-flex flex-row bg-light shadow text-dark align-items-center text-center">
               <div class="w-50">
-                <img class="" src="assets/images/contents/card1.png" alt="" width="100%">
+                <img class="" src="assets/images/contents/graphicdesigner.jpg" alt="" width="100%">
               </div>
               <div class="w-50">
-                <h6>Graphic Designer</h6>
-                <p>Lorem</p>
+                <h6>Graphic & Design</h6>
+                <p style="font-size: small;">UI&UX Design | Landing Page Design | Icon Design</p>
               </div>
             </div>
           </div>
+
           <div class="col-lg-4 col-sm-4 p-2">
             <div class="d-flex flex-row bg-light shadow text-dark align-items-center text-center">
               <div class="w-50">
-                <img class="" src="assets/images/contents/card1.png" alt="" width="100%">
+                <img class="" src="assets/images/contents/architecture.jpg" alt="" width="100%">
+              </div>
+              <div class="w-50">
+                <h6>Achitecture Designer</h6>
+                <p style="font-size: small;">Architecture & Interior Design | Landscape Design | Building Engineering </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-sm-4 p-2">
+            <div class="d-flex flex-row bg-light shadow text-dark align-items-center text-center">
+              <div class="w-50">
+                <img class="" src="assets/images/contents/photographer.jpg" width="100%">
               </div>
               <div class="w-50">
                 <h6>Photographer</h6>
-                <p>Lorem</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-sm-4 p-2">
-            <div class="d-flex flex-row bg-light shadow text-dark align-items-center text-center">
-              <div class="w-50">
-                <img class="" src="assets/images/contents/card1.png" alt="" width="100%">
-              </div>
-              <div class="w-50">
-                <h6>Product Designer</h6>
-                <p>Lorem</p>
+                <p style="font-size: small;">Portrait Photographer | Event Photographers | Real Estate Photographers</p>
               </div>
             </div>
           </div>

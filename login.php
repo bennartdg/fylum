@@ -1,3 +1,80 @@
+<?php
+session_start();
+include('server/connection.php');
+
+if (isset($_SESSION['logged_in'])) {
+  
+  
+}
+
+if (isset($_POST['login_btn'])) {
+  $email = $_POST['account_email'];
+  $password = $_POST['account_password'];
+
+  $query = "SELECT * FROM accounts WHERE account_email =  ? AND account_password = ? LIMIT 1";
+
+  $stmt_login = $conn->prepare($query);
+  $stmt_login->bind_param('ss', $email, $password);
+
+  if ($stmt_login->execute()) {
+    $stmt_login->bind_result($account_id, $account_email, $account_password, $account_level);
+    $stmt_login->store_result();
+
+    if ($stmt_login->num_rows() == 1) {
+      $stmt_login->fetch();
+      if ($account_level == 'ancient') {
+        $q_ancient = "SELECT * FROM ancients WHERE account_email = '$email'";
+        $r_ancient = mysqli_query($conn, $q_ancient);
+
+        $row = mysqli_fetch_assoc($r_ancient);
+
+        $_SESSION['account_id'] = $account_id;
+        $_SESSION['account_email'] = $account_email;
+        $_SESSION['account_password'] = $account_password;
+        $_SESSION['account_level'] = $account_level;
+
+        $_SESSION['ancient_id'] = $row['ancient_id'];
+        $_SESSION['ancient_name'] = $row['ancient_name'];
+        $_SESSION['ancient_balance'] = $row['ancient_balance'];
+
+        $_SESSION['logged_in'] = true;
+
+        header('location: ancients/index.php');
+      } else if($account_level == 'fyler') {
+        $q_fyler = "SELECT * FROM fylers WHERE account_email = '$email'";
+        $r_fyler = mysqli_query($conn, $q_fyler);
+
+        $row= mysqli_fetch_assoc($r_fyler);
+
+        $_SESSION['account_id'] = $account_id;
+        $_SESSION['account_email'] = $account_email;
+        $_SESSION['account_password'] = $account_password;
+        $_SESSION['account_level'] = $account_level;
+
+        $_SESSION['fyler_id'] = $row['fyler_id'];
+        $_SESSION['fyler_name'] = $row['fyler_name'];
+        $_SESSION['fyler_cate'] = $row['fyler_cate'];
+        $_SESSION['fyler_desc'] = $row['fyler_desc'];
+        $_SESSION['fyler_age'] = $row['fyler_age'];
+        $_SESSION['fyler_add'] = $row['fyler_add'];
+        $_SESSION['fyler_balance'] = $row['fyler_balance'];
+        $_SESSION['fyler_photo'] = $row['fyler_photo'];
+        $_SESSION['fyler_project'] = $row['fyler_project'];
+
+        $_SESSION['logged_in'] = true;
+
+        header('location: fylers/index.php');
+      }
+    } else {
+      header('location: login.php?error=Could not verify your account!');
+    }
+  } else {
+    header('location: login.php?error=Something went wrong!');
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +98,7 @@
         <h1 class="fw-bold">Login</h1>
         <p class="text-secondary">Tingkatkan personal branding dan temukan projek terbaikmu</p>
       </div>
-      <form action="" method="post">
+      <form action="login.php" method="POST">
         <div>
           <input class="form-control my-3" type="text" name="account_email" placeholder="Email" require>
         </div>
@@ -29,7 +106,7 @@
           <input class="form-control my-3" type="password" name="account_password" placeholder="Password" require>
         </div>
         <div>
-          <input type="submit" class="form-control btn btn-purple my-3" value="Login">
+          <input type="submit" name="login_btn" class="form-control btn btn-purple my-3" value="Login">
         </div>
       </form>
       <p class="text-center">Baru di Fylum? <a class="text-main-purple text-decoration-none" href="" data-bs-toggle="modal" data-bs-target="#modalRegisterPick">Register Sekarang</a></p>

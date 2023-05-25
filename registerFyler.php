@@ -22,7 +22,7 @@
         <p class="text-secondary">Find your best experience only in Fylum</p>
       </div>
       <div>
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="actionRegister.php" method="POST" enctype="multipart/form-data">
           <div class="d-flex w-100">
             <div class="w-50">
               <div class="px-2">
@@ -66,6 +66,22 @@
                 </div>
               </div>
             </div>
+          </div>
+          <div class="px-2">
+            <!-- Alert Start -->
+            <?php if (isset($_GET["success"]) && $_GET["success"] == true) { ?>
+              <div id="alert" class="alert alert-success alert-dismissible fade show mt-4" role="alert">
+                <?php echo $_GET['message'] ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            <?php } ?>
+            <?php if (isset($_GET['success']) && $_GET['success'] == false) { ?>
+              <div id="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+                <?php echo $_GET['error'] ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            <?php } ?>
+            <!-- Alert Start End -->
           </div>
           <p class="text-center mt-4">Already have an Account? <a class="text-main-purple text-decoration-none" href="login.php">Login Now</a></p>
         </form>

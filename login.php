@@ -3,6 +3,13 @@ session_start();
 include('server/connection.php');
 
 if (isset($_SESSION['logged_in'])) {
+  if ($_SESSION['account_level'] == 'ancient') {
+    header('location: ancients/index.php');
+  } else if ($_SESSION['account_level'] == 'fyler') {
+    header('location: fylers/index.php');
+  } else {
+    header('location: kingdoms/index.php');
+  }
 }
 
 if (isset($_POST['login_btn'])) {
@@ -85,10 +92,10 @@ if (isset($_POST['login_btn'])) {
         header('location: kingdoms/index.php');
       }
     } else {
-      header('location: login.php?error=Could not verify your account!');
+      header('location: login.php?success=0&error=Could not verify your account!');
     }
   } else {
-    header('location: login.php?error=Something went wrong!');
+    header('location: login.php?success=0&error=Something went wrong!');
   }
 }
 
@@ -115,7 +122,7 @@ if (isset($_POST['login_btn'])) {
     <div class="shadow rounded-3 text-dark p-4" style="width: 400px;">
       <div class="text-center pb-2">
         <h1 class="fw-bold">Login</h1>
-        <p class="text-secondary">Tingkatkan personal branding dan temukan projek terbaikmu</p>
+        <p class="text-secondary">Improve your personal branding and Find your best project</p>
       </div>
       <form action="login.php" method="POST">
         <div>
@@ -127,8 +134,16 @@ if (isset($_POST['login_btn'])) {
         <div>
           <input type="submit" name="login_btn" class="form-control btn btn-purple my-3" value="Login">
         </div>
+        <!-- Alert Start -->
+        <?php if (isset($_GET['success']) && $_GET['success'] == false) { ?>
+          <div id="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?php echo $_GET['error'] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <?php } ?>
+        <!-- Alert Start End -->
       </form>
-      <p class="text-center">Baru di Fylum? <a class="text-main-purple text-decoration-none" href="" data-bs-toggle="modal" data-bs-target="#modalRegisterPick">Register Sekarang</a></p>
+      <p class="text-center">New in Fylum? <a class="text-main-purple text-decoration-none" href="" data-bs-toggle="modal" data-bs-target="#modalRegisterPick">Register Now</a></p>
     </div>
     <div class="fixed-bottom text-center mb-3">
       <a href="index.php">
@@ -143,11 +158,11 @@ if (isset($_POST['login_btn'])) {
       <div class="modal-content">
         <div class="modal-body text-main-purple text-center">
           <h1 class="text-secondary" style="font-size: 4em"><i class="fa-solid fa-question"></i></h1>
-          <h1 class="">Register Sebagai</h1>
-          <p class="text-secondary">Pilih King untuk Rekrut Freelancer, Fyler sebagai Freelancer</p>
+          <h1 class="">Register as</h1>
+          <p class="text-secondary">King for Company, Fyler for Freelancer</p>
           <div>
-            <a class="btn btn-purple" href="registerKing.php">King</a>
-            <a class="btn btn-purple" href="registerFyler.php">Fyler</a>
+            <a class="btn btn-purple" style="width: 100px;" href="registerKing.php">King</a>
+            <a class="btn btn-purple" style="width: 100px;" href="registerFyler.php">Fyler</a>
           </div>
         </div>
       </div>

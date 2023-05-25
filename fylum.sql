@@ -27,13 +27,14 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `account_level` varchar(50) NOT NULL DEFAULT '',
   PRIMARY KEY (`account_id`),
   UNIQUE KEY `account_email` (`account_email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table fylum.accounts: ~3 rows (approximately)
+-- Dumping data for table fylum.accounts: ~4 rows (approximately)
 INSERT INTO `accounts` (`account_id`, `account_email`, `account_password`, `account_level`) VALUES
 	(1, 'ancient@gmail.com', 'ancient123', 'ancient'),
 	(2, 'atha@gmail.com', 'atha123', 'king'),
-	(3, 'haikal@gmail.com', 'haikal123', 'fyler');
+	(3, 'haikal@gmail.com', 'haikal123', 'fyler'),
+	(4, 'google@gmail.com', 'google123', 'king');
 
 -- Dumping structure for table fylum.ancients
 CREATE TABLE IF NOT EXISTS `ancients` (
@@ -67,9 +68,9 @@ CREATE TABLE IF NOT EXISTS `fylers` (
   CONSTRAINT `FK__fylers` FOREIGN KEY (`account_email`) REFERENCES `accounts` (`account_email`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2002 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table fylum.fylers: ~0 rows (approximately)
+-- Dumping data for table fylum.fylers: ~1 rows (approximately)
 INSERT INTO `fylers` (`fyler_id`, `account_email`, `fyler_name`, `fyler_cate`, `fyler_desc`, `fyler_age`, `fyler_add`, `fyler_balance`, `fyler_photo`, `fyler_project`) VALUES
-	(2001, 'haikal@gmail.com', 'Muhammad Haikal', 'Design Grafis', 'UI/UX Designer', 19, 'Jl. Burung Gereja', 0, 'haikal.jpg', 0);
+	(2001, 'haikal@gmail.com', 'Muhammad Haikal', 'Graphic Designer', 'Hi there! I am Muhammad Haikal, a graphic designer with 2+ years of work experience. I have the necessary skills you need for social media, landing pages, logos, brochures, and any kind of design you wish with eye-catching and informative design. I always try my best to deliver more than my customer\'s expectations.', 19, 'Jl. Burung Gereja', 0, 'haikal.jpg', 0);
 
 -- Dumping structure for table fylum.kings
 CREATE TABLE IF NOT EXISTS `kings` (
@@ -77,17 +78,18 @@ CREATE TABLE IF NOT EXISTS `kings` (
   `account_email` varchar(50) NOT NULL DEFAULT '',
   `king_name` varchar(50) NOT NULL DEFAULT '',
   `king_desc` varchar(500) NOT NULL,
-  `king_add` varchar(50) NOT NULL DEFAULT '',
+  `king_add` varchar(500) NOT NULL DEFAULT '',
   `king_balance` int(11) NOT NULL,
   `king_photo` varchar(50) NOT NULL DEFAULT '',
   PRIMARY KEY (`king_id`),
   KEY `FK_kings` (`account_email`),
   CONSTRAINT `FK_kings` FOREIGN KEY (`account_email`) REFERENCES `accounts` (`account_email`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=1002 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1003 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table fylum.kings: ~0 rows (approximately)
+-- Dumping data for table fylum.kings: ~2 rows (approximately)
 INSERT INTO `kings` (`king_id`, `account_email`, `king_name`, `king_desc`, `king_add`, `king_balance`, `king_photo`) VALUES
-	(1001, 'atha@gmail.com', 'Hasnaura Atha', 'Startup', 'Taman Kopo Katapang', 1000000, 'atha.jpg');
+	(1001, 'atha@gmail.com', 'Hasnaura Atha', 'Startup', 'Taman Kopo Katapang', 1000000, 'atha.jpg'),
+	(1002, 'google@gmail.com', 'Google', 'The biggest company in The World', '1600 Amphitheatre Parkway in Mountain View, California', 0, 'google.jpg');
 
 -- Dumping structure for table fylum.portos
 CREATE TABLE IF NOT EXISTS `portos` (
@@ -102,9 +104,9 @@ CREATE TABLE IF NOT EXISTS `portos` (
   CONSTRAINT `FK_portos` FOREIGN KEY (`fyler_id`) REFERENCES `fylers` (`fyler_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=3002 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table fylum.portos: ~0 rows (approximately)
+-- Dumping data for table fylum.portos: ~1 rows (approximately)
 INSERT INTO `portos` (`porto_id`, `fyler_id`, `porto_name`, `porto_desc`, `porto_date`, `porto_photo`) VALUES
-	(3001, 2001, 'My Pertamina Redesign', 'Melakukan redesign pada aplikasi My Pertamina', '2022-02-20', 'mypertamina.jpg');
+	(3001, 2001, 'My Pertamina Redesign', 'Redesign Application UI of MyPertamina', '2022-02-20', 'mypertamina.jpg');
 
 -- Dumping structure for table fylum.projects
 CREATE TABLE IF NOT EXISTS `projects` (

@@ -19,10 +19,10 @@
     <div class="shadow rounded-3 text-dark p-4" style="width: 800px;">
       <div class="text-center pb-2">
         <h1 class="fw-bold">Register Fyler</h1>
-        <p class="text-secondary">Temukan pengalaman terbaikmu menjadi Freelancer di FyLum</p>
+        <p class="text-secondary">Find your best experience only in Fylum</p>
       </div>
       <div>
-        <form action="" method="post">
+        <form action="" method="POST" enctype="multipart/form-data">
           <div class="d-flex w-100">
             <div class="w-50">
               <div class="px-2">
@@ -37,6 +37,9 @@
                 </div>
                 <div class="py-2">
                   <textarea class="form-control" name="fyler_add" id="" cols="30" rows="3" placeholder="Address" required></textarea>
+                </div>
+                <div class="py-2">
+                  <input class="form-control" type="file" name="fyler_photo" placeholder="Profile Photo" require>
                 </div>
               </div>
             </div>
@@ -59,15 +62,15 @@
                   <textarea class="form-control" name="fyler_desc" id="" cols="30" rows="3" placeholder="Yourself Description" required></textarea>
                 </div>
                 <div class="py-2">
-                  <input class="form-control" type="file" name="fyler_photo" placeholder="Profile Photo" require>
+                  <input class="form-control btn btn-purple" type="submit" name="fyler_register" value="Register">
                 </div>
               </div>
             </div>
           </div>
-          <p class="text-center mt-4">Sudah memiliki akun? <a class="text-main-purple text-decoration-none" href="login.php">Login Sekarang</a></p>
+          <p class="text-center mt-4">Already have an Account? <a class="text-main-purple text-decoration-none" href="login.php">Login Now</a></p>
         </form>
       </div>
-    </div>  
+    </div>
     <div class="fixed-bottom text-center mb-3">
       <a href="index.php">
         <img src="assets/images/icons/fylum.png" alt="" height="40px">

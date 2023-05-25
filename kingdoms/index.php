@@ -2,6 +2,10 @@
 session_start();
 include('../server/connection.php');
 
+if (!isset($_SESSION['logged_in'])) {
+  header('location: ../login.php');
+}
+
 if (isset($_SESSION['logged_in'])) {
   $account_id = $_SESSION['account_id'];
   $account_email = $_SESSION['account_email'];

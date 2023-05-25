@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+if (isset($_SESSION['logged_in'])) {
+  if ($_SESSION['account_level'] == 'ancient') {
+    header('location: ancients/index.php');
+  } else if ($_SESSION['account_level'] == 'fyler') {
+    header('location: fylers/index.php');
+  } else {
+    header('location: kingdoms/index.php');
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,11 +33,11 @@
     <div class="shadow rounded-3 text-dark p-4" style="width: 800px;">
       <div class="text-center pb-2">
         <h1 class="fw-bold">Register King</h1>
-        <p class="text-secondary">Temukan Freelancer yang kamu butuhkan di FyLum</p>
+        <p class="text-secondary">Find a greatest Freelancer only on FyLum</p>
       </div>
       <div>
-        <form action="" method="post">
-          <div class="d-flex w-100">
+        <form action="actionRegister.php" method="POST" enctype="multipart/form-data">
+          <div class="d-flex w-100 mb-3">
             <div class="w-50">
               <div class="px-2">
                 <div class="py-2">
@@ -43,18 +57,37 @@
             <div class="w-50">
               <div class="px-2">
                 <div class="py-2">
-                  <input class="form-control" type="text" name="king_name" placeholder="Name" require>
+                  <input class="form-control" type="text" name="king_name" placeholder="Company Name" require>
                 </div>
                 <div class="py-2">
-                  <textarea class="form-control" name="king_desc" id="" cols="30" rows="3" placeholder="Yourself Description" required></textarea>
+                  <textarea class="form-control" name="king_desc" id="" cols="30" rows="3" placeholder="Company Description" required></textarea>
                 </div>
                 <div class="py-2">
                   <input class="form-control" type="file" name="king_photo" placeholder="Profile Photo" require>
                 </div>
+                <div class="py-2">
+                  <input class="form-control btn btn-purple" type="submit" name="king_register" value="Register">
+                </div>
               </div>
             </div>
           </div>
-          <p class="text-center mt-4">Sudah memiliki akun? <a class="text-main-purple text-decoration-none" href="login.php">Login Sekarang</a></p>
+          <div class="px-2">
+            <!-- Alert Start -->
+            <?php if (isset($_GET["success"]) && $_GET["success"] == true) { ?>
+              <div id="alert" class="alert alert-success alert-dismissible fade show mt-4" role="alert">
+                <?php echo $_GET['message'] ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            <?php } ?>
+            <?php if (isset($_GET['success']) && $_GET['success'] == false) { ?>
+              <div id="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+                <?php echo $_GET['error'] ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            <?php } ?>
+            <!-- Alert Start End -->
+          </div>
+          <p class="text-center mt-4">Already have an Account? <a class="text-main-purple text-decoration-none" href="login.php">Login Now</a></p>
         </form>
       </div>
     </div>

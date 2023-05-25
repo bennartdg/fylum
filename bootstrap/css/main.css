@@ -101,15 +101,18 @@
 .link-purple {
   color: #4e31aa;
   text-decoration: none;
+  transition: all 0.3s ease-in-out;
 }
 
 .link-purple:hover {
   color: #383746;
+  transition: all 0.3s ease-in-out;
 }
 
 .link-light-purple {
   color: #fcfcfc;
   text-decoration: none;
+  transition: all 0.3s ease-in-out;
 }
 
 .link-light-purple:hover {
@@ -120,6 +123,7 @@
 .link-secondary-purple {
   color: #645dbc;
   text-decoration: none;
+  transition: all 0.3s ease-in-out;
 }
 
 .link-secondary-purple:hover {
@@ -128,13 +132,47 @@
 }
 
 .card-scale {
+  scale: 1;
+  transition: 500ms;
+  cursor: pointer;
+}
+
+.card-scale:hover {
+  scale: 1.1;
+  transition: 500ms;
+  cursor: pointer;
+}
+
+.c-scale {
   scale: 0.9;
   transition: 500ms;
   cursor: default;
 }
 
-.card-scale:hover {
+.c-scale:hover {
   scale: 1;
   transition: 500ms;
   cursor: default;
+}
+
+.nav-color {
+  background-color: #fcfcfc;
+  transition: all 500ms ease-in-out;
+}
+
+.nav-transparent {
+  background: transparent;
+  transition: all 500ms ease-in-out;
+}
+
+.project-item {
+  background-color: #fcfcfc;
+  width: 100%;
+  transition: all 500ms ease-in-out;
+}
+
+.project-item:hover {
+  cursor: pointer;
+  width: 105%;
+  transition: all 500ms ease-in-out;
 }

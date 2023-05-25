@@ -1,3 +1,18 @@
+<?php
+session_start();
+include('server/connection.php');
+
+if (isset($_SESSION['logged_in'])) {
+  if ($_SESSION['account_level'] == 'ancient') {
+    header('location: ancients/index.php');
+  } else if ($_SESSION['account_level'] == 'fyler') {
+    header('location: fylers/index.php');
+  } else {
+    header('location: kingdoms/index.php');
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,14 +31,14 @@
 
 <body class="bg-main-purple">
   <header>
-    <nav class="navbar p-0 fixed-top bg-blur">
+    <nav class="navbar p-0 fixed-top nav-transparent">
       <div class="container-fluid w-75 py-2">
         <a class="navbar-brand" href="">
-          <img src="assets/images/icons/fylum.png" height="40px" alt="">
+          <img src="assets/images/icons/fylum.png" height="30px" alt="">
         </a>
         <div class="fs-5">
-          <a class="link-purple mx-3" href="login.php">Login</a>
-          <a class="link-secondary-purple" href="" data-bs-toggle="modal" data-bs-target="#modalRegisterPick">Register</a>
+          <a class="link-secondary-purple mx-3" href="login.php">Login</a>
+          <a class="link-purple" href="" data-bs-toggle="modal" data-bs-target="#modalRegisterPick">Register</a>
         </div>
       </div>
     </nav>
@@ -40,10 +55,10 @@
       </div>
       <section class="container w-75 d-flex justify-content-center position-absolute start-50 translate-middle">
         <div class="row">
-          <div class="card-scale col-lg-4 col-sm-4 p-2">
-            <div class="d-flex flex-row bg-light shadow text-dark align-items-center text-center">
+          <div class="c-scale col-lg-4 col-sm-4 p-2">
+            <div class="d-flex flex-row bg-light shadow text-dark align-items-center text-center rounded-3">
               <div class="w-50">
-                <img class="" src="assets/images/contents/graphicdesigner.jpg" alt="" width="100%">
+                <img class="rounded-start-3" src="assets/images/contents/graphicdesigner.jpg" alt="" width="100%">
               </div>
               <div class="w-50">
                 <h6>Graphic & Design</h6>
@@ -52,10 +67,10 @@
             </div>
           </div>
 
-          <div class="card-scale col-lg-4 col-sm-4 p-2">
-            <div class="d-flex flex-row bg-light shadow text-dark align-items-center text-center">
+          <div class="c-scale col-lg-4 col-sm-4 p-2">
+            <div class="d-flex flex-row bg-light shadow text-dark align-items-center text-center rounded-3">
               <div class="w-50">
-                <img class="" src="assets/images/contents/architecture.jpg" alt="" width="100%">
+                <img class="rounded-start-3" src="assets/images/contents/architecture.jpg" alt="" width="100%">
               </div>
               <div class="w-50">
                 <h6>Achitecture Designer</h6>
@@ -64,10 +79,10 @@
             </div>
           </div>
 
-          <div class="card-scale col-lg-4 col-sm-4 p-2">
-            <div class="d-flex flex-row bg-light shadow text-dark align-items-center text-center">
+          <div class="c-scale col-lg-4 col-sm-4 p-2">
+            <div class="d-flex flex-row bg-light shadow text-dark align-items-center text-center rounded-3">
               <div class="w-50">
-                <img class="" src="assets/images/contents/photographer.jpg" width="100%">
+                <img class="rounded-start-3" src="assets/images/contents/photographer.jpg" width="100%">
               </div>
               <div class="w-50">
                 <h6>Photographer</h6>
@@ -86,21 +101,19 @@
       <div class="modal-content">
         <div class="modal-body text-main-purple text-center">
           <h1 class="text-secondary" style="font-size: 4em"><i class="fa-solid fa-question"></i></h1>
-          <h1 class="">Register Sebagai</h1>
-          <p class="text-secondary">Pilih King untuk Rekrut Freelancer, Fyler sebagai Freelancer</p>
+          <h1 class="">Register as</h1>
+          <p class="text-secondary">King for Company, Fyler for Freelancer</p>
           <div>
-            <a class="btn btn-purple" href="registerKing.php">King</a>
-            <a class="btn btn-purple" href="registerFyler.php">Fyler</a>
+            <a class="btn btn-purple" style="width: 100px;" href="registerFyler.php">Fyler</a>
+            <a class="btn btn-purple" style="width: 100px;" href="registerKing.php">King</a>
           </div>
         </div>
       </div>
     </div>
   </div>
   <!-- Modal Register Pick End -->
-
-  <footer class="pt-5 bg-light">
+  <footer class="pt-5 bg-nearly-white">
     <div class="pt-5">
-
       <div class="container-fluid bg-dark p-0">
         <div class="container">
           <div class="d-flex justify-content-center p-5">
@@ -155,6 +168,7 @@
     </div>
   </footer>
   <script src="bootstrap/js/bootstrap.js"></script>
+  <script src="bootstrap/js/script.js"></script>
 </body>
 
 </html>

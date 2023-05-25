@@ -104,8 +104,8 @@ if (isset($_SESSION['logged_in'])) {
           <h1 class="">Register as</h1>
           <p class="text-secondary">King for Company, Fyler for Freelancer</p>
           <div>
-            <a class="btn btn-purple" style="width: 100px;" href="registerFyler.php">Fyler</a>
             <a class="btn btn-purple" style="width: 100px;" href="registerKing.php">King</a>
+            <a class="btn btn-purple" style="width: 100px;" href="registerFyler.php">Fyler</a>
           </div>
         </div>
       </div>

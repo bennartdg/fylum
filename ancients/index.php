@@ -30,6 +30,32 @@ if (isset($_GET['logout'])) {
 
 ?>
 
+<?php
+$q_t_project = "SELECT COUNT(*) AS total_project FROM projects";
+$r_t_project = mysqli_query($conn, $q_t_project);
+$row_t_project = mysqli_fetch_assoc($r_t_project);
+$total_project = $row_t_project['total_project'];
+?>
+
+<?php
+$q_t_cost = "SELECT SUM(project_cost) AS total_cost FROM projects WHERE project_status = 'finished'";
+$r_t_cost = mysqli_query($conn, $q_t_cost);
+$row_t_cost = mysqli_fetch_assoc($r_t_cost);
+$total_cost = $row_t_cost['total_cost'];
+?>
+
+<?php
+$q_fyler = "SELECT * FROM fylers";
+$r_fyler = mysqli_query($conn, $q_fyler);
+$total_fyler = mysqli_num_rows($r_fyler);
+?>
+
+<?php
+$q_king = "SELECT * FROM kings";
+$r_king = mysqli_query($conn, $q_king);
+$total_king = mysqli_num_rows($r_king);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,23 +87,23 @@ if (isset($_GET['logout'])) {
           <div class="shadow w-25 rounded-3 mb-3 ps-3 me-3 bg-main-purple">
             <div class="bg-nearly-white text-dark w-100 h-100 p-3 rounded-end-3">
               <h3 class="fw-bold">Total Project</h3>
-              <p class="fw-light fs-5">123 Projects</p>
+              <p class="fw-light fs-5"><?= $total_project ?> Projects</p>
               <h1 class="text-end text-main-grey"><i class="fa-solid fa-chart-simple"></i></h1>
             </div>
           </div>
           <div class="shadow w-25 rounded-3 mb-3 me-3 p-3">
             <h3 class="fw-bold">Projects Cost</h3>
-            <p class="fw-light fs-5">Rp.100.000.000,00</p>
+            <p class="fw-light fs-5">Rp.<?= number_format($total_cost) ?>.00</p>
             <h1 class="text-end text-main-grey"><i class="fa-solid fa-money-bill-transfer"></i></h1>
           </div>
           <div class="shadow w-25 rounded-3 mb-3 me-3 p-3">
             <h3 class="fw-bold">Fyler Active</h3>
-            <p class="fw-light fs-5">5 Fylers</p>
+            <p class="fw-light fs-5"><?= $total_fyler ?> Fylers</p>
             <h1 class="text-end text-main-grey"><i class="fa-solid fa-laptop"></i></h1>
           </div>
           <div class="shadow w-25 rounded-3 mb-3 p-3">
             <h3 class="fw-bold">Kings Active</h3>
-            <p class="fw-light fs-5">3 Kings</p>
+            <p class="fw-light fs-5"><?= $total_king ?> Kings</p>
             <h1 class="text-end text-main-grey"><i class="fa-solid fa-crown"></i></h1>
           </div>
         </div>
@@ -112,7 +138,7 @@ if (isset($_GET['logout'])) {
             </div>
             <div class="d-flex mx-3 px-2 pt-2 border-top">
               <h5>Balance:</h5>
-              <p class="ms-3">Rp.5000000000,00</p>
+              <p class="ms-3">Rp.<?= number_format($ancient_balance) ?>.00</p>
             </div>
           </div>
         </div>
@@ -127,7 +153,7 @@ if (isset($_GET['logout'])) {
                 <th scope="col">Action</th>
               </thead>
               <!-- While -->
-              <tr class="text-center">
+              <tr class="text-center table-row">
                 <td>2001</td>
                 <td>Muhammad Haikal</td>
                 <td>Graphic Designer</td>
@@ -135,6 +161,9 @@ if (isset($_GET['logout'])) {
                 <td><a class="link-purple" href=""><i class="fa-solid fa-trash"></i></a></td>
               </tr>
               <!-- While -->
+              <tr class="bg-main-purple w-100">
+                <td class="rounded-bottom-3" colspan="5"></td>
+              </tr>
             </table>
           </div>
         </div>

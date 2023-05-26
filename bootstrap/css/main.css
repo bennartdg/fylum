@@ -143,6 +143,18 @@
   cursor: pointer;
 }
 
+.card-scale-1 {
+  scale: 1;
+  transition: 500ms;
+  cursor: pointer;
+}
+
+.card-scale-1:hover {
+  scale: 1.01;
+  transition: 500ms;
+  cursor: pointer;
+}
+
 .c-scale {
   scale: 0.9;
   transition: 500ms;
@@ -174,5 +186,14 @@
 .project-item:hover {
   cursor: pointer;
   width: 105%;
+  transition: all 500ms ease-in-out;
+}
+
+.table-row {
+  background-color: #645dbc;
+}
+
+.table-row:hover {
+  background-color: #dbdbdb;
   transition: all 500ms ease-in-out;
 }

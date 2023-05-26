@@ -73,7 +73,7 @@ if (isset($_SESSION['logged_in'])) {
                 <img class="rounded-start-3" src="assets/images/contents/architecture.jpg" alt="" width="100%">
               </div>
               <div class="w-50">
-                <h6>Achitecture Designer</h6>
+                <h6>Architecture Designer</h6>
                 <p style="font-size: small;">Architecture & Interior Design | Landscape Design | Building Engineering </p>
               </div>
             </div>

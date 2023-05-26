@@ -43,7 +43,7 @@ if (isset($_POST['king_register'])) {
       }
     }
   }
-} else if(isset($_POST['fyler_register'])){
+} else if (isset($_POST['fyler_register'])) {
   $path = "assets/images/profiles/fylers/" . basename($_FILES['fyler_photo']['name']);
 
   $email = $_POST['account_email'];
@@ -73,7 +73,7 @@ if (isset($_POST['king_register'])) {
       $r_account = mysqli_query($conn, $q_account);
 
       $q_fyler = "INSERT INTO fylers VALUES 
-      (null, '$email', '$name', '$cate', '$desc', '$age','$add', 0, '$photo', 0)
+      (null, '$email', '$name', '$cate', '$desc', '$age', '$add', 0, '$photo', 0)
       ";
 
       $r_fyler = mysqli_query($conn, $q_fyler);

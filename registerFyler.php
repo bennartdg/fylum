@@ -52,7 +52,7 @@
                   <select class="form-select" name="fyler_cate" aria-label="Default select example" require>
                     <option value="Graphic Designer" selected>Graphic Designer</option>
                     <option value="Photographer">Photographer</option>
-                    <option value="Product Designer">Product Designer</option>
+                    <option value="Architecture Designer">Architecture Designer</option>
                   </select>
                 </div>
                 <div class="py-2">

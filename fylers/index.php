@@ -35,6 +35,23 @@ if (isset($_GET['logout'])) {
 }
 
 ?>
+<!-- Portos -->
+<?php
+$q_portos = "SELECT * FROM portos WHERE fyler_id = $fyler_id";
+$r_portos = mysqli_query($conn, $q_portos);
+?>
+<!-- Portos -->
+
+<!-- Projects -->
+<?php
+$q_projects = "SELECT p.project_id, p.king_id, k.king_name,
+p.fyler_id, p.project_name, p.project_desc, p.project_start,
+p.project_end, p.project_cost, p.project_tax, p.project_fee,
+p.project_status, p.project_deliv
+ FROM projects p JOIN kings k ON p.king_id = k.king_id WHERE fyler_id = $fyler_id";
+$r_projects = mysqli_query($conn, $q_projects);
+?>
+<!-- Projects -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +84,7 @@ if (isset($_GET['logout'])) {
         <div class="shadow p-3 d-flex rounded-3 mb-3">
           <div class="w-75">
             <div class="d-flex align-items-center ps-5">
-              <img class="rounded-circle w-25 h-25" src="../assets/images/profiles/fylers/<?= $fyler_photo ?>" alt="">
+              <img class="object-fit-cover rounded-circle" src="../assets/images/profiles/fylers/<?= $fyler_photo ?>" alt="" height="200px" width="200px">
               <div class="d-flex flex-column ms-5">
                 <h2><?= $fyler_name ?></h2>
                 <p class="fs-5"><?= $fyler_cate ?></p>
@@ -107,64 +124,36 @@ if (isset($_GET['logout'])) {
             <div class="shadow py-3 rounded-3">
               <div class="border-bottom">
                 <h5 class="ps-5">My Projects</h5>
-                <p class="ps-5 fw-light">Count: 4</p>
+                <p class="ps-5 fw-light">Count: <?= mysqli_num_rows($r_projects)?></p>
               </div>
               <!-- Project List Start -->
-              <div class="border-bottom project-item">
-                <div class="p-3">
-                  <div class="d-flex align-item-center justify-content-between m-0">
-                    <h5 class="m-0">Project Name</h5>
-                    <h5 class="text-main-purple">
-                      <i class="fa-solid fa-bell fa-sm"></i>
-                    </h5>
+              <?php while ($row = mysqli_fetch_assoc($r_projects)) { ?>
+                <!-- Icon Logic -->
+                <?php if ($row['project_status'] == 'unread') {
+                  $icon_stat = '<i class="fa-solid fa-bell fa-sm"></i>';
+                } else if ($row['project_status'] == 'ongoing') {
+                  $icon_stat = '<i class="fa-solid fa-rotate fa-sm"></i>';
+                } else if ($row['project_status'] == 'finished') {
+                  $icon_stat = '<i class="fa-solid fa-check fa-sm"></i>';
+                } else {
+                  $icon_stat = '<i class="fa-solid fa-ban fa-sm"></i>';
+                } ?>
+                <!-- Icon Logic -->
+
+                <div class="border-bottom project-item">
+                  <div class="p-3">
+                    <div class="d-flex align-item-center justify-content-between m-0">
+                      <h5 class="m-0"><?= $row['project_name'] ?></h5>
+                      <h5 class="text-main-purple">
+                        <?= $icon_stat ?>
+                      </h5>
+                    </div>
+                    <p class="mb-2 fw-light">From: <?= $row['king_name'] ?></p>
+                    <p class="m-0 fw-bold text-end fst-italic">Rp<?= number_format($row['project_cost']) ?>.00</p>
                   </div>
-                  <p class="mb-2 fw-light">From: King Name</p>
-                  <p class="m-0 fw-bold text-end fst-italic">Rp.1.000.000,00</p>
                 </div>
-              </div>
-              <!-- Project List Start -->
-              <!-- Project List Start -->
-              <div class="border-bottom project-item">
-                <div class="p-3">
-                  <div class="d-flex align-item-center justify-content-between m-0">
-                    <h5 class="m-0">Project Name</h5>
-                    <h5 class="text-main-purple">
-                      <i class="fa-solid fa-rotate fa-sm"></i>
-                    </h5>
-                  </div>
-                  <p class="mb-2 fw-light">From: King Name</p>
-                  <p class="m-0 fw-bold text-end fst-italic">Rp.1.000.000,00</p>
-                </div>
-              </div>
-              <!-- Project List Start -->
-              <!-- Project List Start -->
-              <div class="border-bottom project-item">
-                <div class="p-3">
-                  <div class="d-flex align-item-center justify-content-between m-0">
-                    <h5 class="m-0">Project Name</h5>
-                    <h5 class="text-main-purple">
-                      <i class="fa-solid fa-check fa-sm"></i>
-                    </h5>
-                  </div>
-                  <p class="mb-2 fw-light">From: King Name</p>
-                  <p class="m-0 fw-bold text-end fst-italic">Rp.1.000.000,00</p>
-                </div>
-              </div>
-              <!-- Project List Start -->
-              <!-- Project List Start -->
-              <div class="border-bottom project-item">
-                <div class="p-3">
-                  <div class="d-flex align-item-center justify-content-between m-0">
-                    <h5 class="m-0">Project Name</h5>
-                    <h5 class="text-main-purple">
-                      <i class="fa-solid fa-ban fa-sm"></i>
-                    </h5>
-                  </div>
-                  <p class="mb-2 fw-light">From: King Name</p>
-                  <p class="m-0 fw-bold text-end fst-italic">Rp.1.000.000,00</p>
-                </div>
-              </div>
-              <!-- Project List Start -->
+              <?php } ?>
+              <!-- Project List End -->
               <div class="d-flex mt-4 justify-content-evenly" style="font-size: x-small;">
                 <p class="text-main-purple">
                   unread<i class="fa-solid fa-bell fa-sm"></i>
@@ -190,16 +179,23 @@ if (isset($_GET['logout'])) {
               <p><?= $fyler_desc ?></p>
             </div>
             <div class="px-5">
-              <h3 class="fw-bold">MY PORTO</h3>
-
+              <div class="d-flex align-items-center">
+                <h3 class="fw-bold m-0">MY PORTO</h3>
+                <a class="link-purple c-scale" href=""><i class="fa-solid fa-plus fa-xl"></i></a>
+              </div>
+              
               <div class="row">
-                <?php for ($i = 0; $i < 6; $i++) { ?>
+                <?php while ($row = mysqli_fetch_assoc($r_portos)) { ?>
                   <div class="col-lg-4 col-sm-6 d-flex flex-column align-items-center justify-content-center my-3 mx-0">
-                    <div class="card card-scale rounded-3" style="height: 300px;">
-                      <img src="../assets/images/contents/card1.png" class="object-fit-cover rounded-top-3" alt="" height="150px">
+                    <div class="card card-scale rounded-3" style="height: 350px;">
+                      <img src="../assets/images/portos/<?= $row['porto_photo'] ?>" class="object-fit-cover rounded-top-3 w-100" alt="" height="150px">
                       <div class="card-body">
-                        <h5 class="card-tittle">Porto Name</h5>
-                        <p class="card-text">Porto Description what is this porto talks aboutasdfasdf</p>
+                        <h5 class="card-tittle"><?= $row['porto_name'] ?></h5>
+                        <p class="card-text"><?= $row['porto_desc'] ?></p>
+                        <div>
+                          <a class="btn btn-purple" href=""><i class="fa-solid fa-pen-to-square"></i></a>
+                          <a class="btn btn-transparent-purple" href=""><i class="fa-solid fa-trash"></i></a>
+                        </div>
                       </div>
                     </div>
                   </div>

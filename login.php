@@ -83,7 +83,7 @@ if (isset($_POST['login_btn'])) {
         $_SESSION['king_id'] = $row['king_id'];
         $_SESSION['king_name'] = $row['king_name'];
         $_SESSION['king_desc'] = $row['king_desc'];
-        $_SESSION['king_add'] = $row['king_iadd'];
+        $_SESSION['king_add'] = $row['king_add'];
         $_SESSION['king_balance'] = $row['king_balance'];
         $_SESSION['king_photo'] = $row['king_photo'];
 

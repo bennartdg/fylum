@@ -48,7 +48,7 @@ $q_projects = "SELECT p.project_id, p.king_id, f.fyler_name,
 p.fyler_id, p.project_name, p.project_desc, p.project_start,
 p.project_end, p.project_cost, p.project_tax, p.project_fee,
 p.project_status, p.project_deliv
- FROM projects p JOIN fylers f ON f.fyler_id = p.fyler_id WHERE king_id = $king_id";
+ FROM projects p JOIN fylers f ON f.fyler_id = p.fyler_id WHERE king_id = $king_id ORDER BY f.fyler_name";
 $r_projects = mysqli_query($conn, $q_projects);
 ?>
 
@@ -95,20 +95,146 @@ $r_projects = mysqli_query($conn, $q_projects);
               </form>
             </div>
             <?php while ($row = mysqli_fetch_assoc($r_fyler)) { ?>
-              <div class="mb-3 me-3">
-                <div class="shadow card-scale-1 rounded-3">
-                  <div class="d-flex p-5">
-                    <div>
-                      <img class="object-fit-cover rounded-circle" src="../assets/images/profiles/fylers/<?= $row['fyler_photo'] ?>" alt="" height="150px" width="150px">
+              <a class="text-dark text-decoration-none" href="" data-bs-toggle="modal" data-bs-target="#modalFylerDetail<?= $row['fyler_id'] ?>">
+                <div class="mb-3 me-3">
+                  <div class="shadow card-scale-1 rounded-3">
+                    <div class="d-flex p-5">
+                      <div>
+                        <img class="object-fit-cover rounded-circle" src="../assets/images/profiles/fylers/<?= $row['fyler_photo'] ?>" alt="" height="150px" width="150px">
+                      </div>
+                      <div class="ms-4">
+                        <h4><?= $row['fyler_name'] ?></h4>
+                        <p><?= $row['fyler_cate'] ?></p>
+                        <p class="fw-light"><?= $row['fyler_desc'] ?></p>
+                      </div>
                     </div>
-                    <div class="ms-4">
-                      <h4><?= $row['fyler_name'] ?></h4>
-                      <p><?= $row['fyler_cate'] ?></p>
-                      <p class="fw-light"><?= $row['fyler_desc'] ?></p>
+                  </div>
+                </div>
+              </a>
+              <!-- Modal Detail Fyler Start -->
+              <div class="modal fade" id="modalFylerDetail<?= $row['fyler_id'] ?>" tabindex="-1" aria-labelledby="modalFylerDetail" aria-hidden="true">
+                <?php
+                $fyler_id = $row['fyler_id'];
+                $q_porto = "SELECT * FROM portos WHERE fyler_id = '$fyler_id' ORDER BY porto_date DESC";
+                $r_porto = mysqli_query($conn, $q_porto);
+                ?>
+                <div class="modal-dialog modal-dialog-centered modal-xl">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <div class="d-flex justify-content-between w-100">
+                        <div class="d-flex align-items-end text-main-purple w-50 justify-content-between">
+                          <h1 class="fw-bold">FYLER</h1>
+                          <h3 class="fw-bold">FYLER</h3>
+                          <h6 class="fw-bold">FYLER</h6>
+                        </div>
+                        <div class="d-flex w-50 justify-content-end">
+                          <a class="btn btn-close text-light" type="button" data-bs-dismiss="modal" aria-label="Close"></a>
+                        </div>
+                      </div>
+                      <div class="p-5 d-flex">
+                        <div class="w-75">
+                          <div class="d-flex align-items-center">
+                            <div>
+                              <img class="rounded-circle object-fit-cover" src="../assets/images/profiles/fylers/<?= $row['fyler_photo'] ?>" alt="" width="150px" height="150px">
+                            </div>
+                            <div class="ms-3">
+                              <h2 class="m-0"><?= $row['fyler_name'] ?></h2>
+                              <p class="m-0 fs-5"><?= $row['account_email'] ?></p>
+                              <p class="text-secondary"><?= $row['fyler_add'] ?></p>
+                            </div>
+                          </div>
+                          <div class="mt-3 pe-3" style="height: 215px;">
+                            <div class="d-flex flex-column">
+                              <div class="mb-auto">
+                                <p class="fs-4"><?= $row['fyler_cate'] ?></p>
+                                <p class="fw-light"><?= $row['fyler_desc'] ?></p>
+                              </div>
+                              <div class="">
+                                <a class="btn btn-purple" href="" style="width: 100px;" data-bs-toggle="modal" data-bs-target="#modalHire<?= $fyler_id ?>">HIRE</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="w-25 pt-3 px-3">
+                          <h2 class="fw-bold ps-2">PORTO</h2>
+                          <div class="overflow-y-auto rounded-3" style="height: 320px;">
+                            <?php while ($p_row = mysqli_fetch_assoc($r_porto)) { ?>
+                              <div class="col-lg-12 col-sm-12 d-flex flex-column align-items-center justify-content-center my-3 px-2">
+                                <div class="card rounded-3" style="height: 300px;">
+                                  <img src="../assets/images/portos/<?= $p_row['porto_photo'] ?>" class="object-fit-cover rounded-top-3 w-100" alt="" height="150px">
+                                  <div class="card-body">
+                                    <h5 class="card-tittle"><?= $p_row['porto_name'] ?></h5>
+                                    <p class="card-text"><?= $p_row['porto_desc'] ?></p>
+                                  </div>
+                                </div>
+                              </div>
+                            <?php } ?>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <!-- Modal Detail Fyler End -->
+
+              <!-- Modal Hire Fyler Start -->
+              <div class="modal fade" id="modalHire<?= $row['fyler_id'] ?>" tabindex="-1" aria-labelledby="modalHire" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <div class="d-flex align-items-end text-main-purple w-75 justify-content-between">
+                        <h1 class="fw-bold">HIRE</h1>
+                        <h3 class="fw-bold">FYLER</h3>
+                        <h6 class="fw-bold">PROJECT</h6>
+                      </div>
+                      <div class="d-flex p-3 border-bottom">
+                        <div>
+                          <img class="rounded-circle object-fit-cover" src="../assets/images/profiles/fylers/<?= $row['fyler_photo'] ?>" alt="" width="100px" height="100px">
+                        </div>
+                        <div class="ms-3">
+                          <h3 class="m-0"><?= $row['fyler_name'] ?></h3>
+                          <p class="m-0 fs-5"><?= $row['fyler_cate'] ?></p>
+                          <p class="text-secondary"><?= $row['account_email'] ?></p>
+                        </div>
+                      </div>
+                      <form class="p-3" action="" method="POST">
+                        <div class="d-flex">
+                          <div class="w-50 me-3">
+                            <div class="mb-3">
+                              <label class="mb-2" for="">Project Name</label>
+                              <input class="form-control" type="text" name="project_name" required>
+                            </div>
+                            <div class="mb-3">
+                              <label class="mb-2" for="">Project Description</label>
+                              <textarea class="form-control" name="project_desc" id="" cols="30" rows="5" required></textarea>
+                            </div>
+                          </div>
+                          <div class="w-50">
+                            <div class="mb-3">
+                              <label class="mb-2" for="">Project Start Date</label>
+                              <input class="form-control" type="date" name="project_start" required>
+                            </div>
+                            <div class="mb-3">
+                              <label class="mb-2" for="">Project End Date</label>
+                              <input class="form-control" type="date" name="project_end" required>
+                            </div>
+                            <div class="mb-3">
+                              <label class="mb-2" for="">Project Cost</label>
+                              <input class="form-control" type="text" name="project_cost" required>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="d-flex mb-3 justify-content-end">
+                          <a class="btn btn-light-purple me-2" style="width: 100px;" href="" data-bs-toggle="modal" data-bs-target="#modalFylerDetail<?= $fyler_id ?>">BACK</a>
+                          <input class="btn btn-purple" type="submit" name="hire_project" value="START PROJECT">
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Modal Hire Fyler End -->
             <?php } ?>
           </div>
           <!-- Left -->
@@ -154,18 +280,99 @@ $r_projects = mysqli_query($conn, $q_projects);
                     $icon_stat = '<i class="fa-solid fa-ban fa-sm"></i>';
                   } ?>
                   <!-- Icon Logic -->
-                  <div class="border-bottom project-item">
-                    <div class="d-flex flex-column p-3 justify-content-end">
-                      <div class="d-flex align-item-center justify-content-between m-0">
-                        <h5 class="m-0"><?= $row['project_name'] ?></h5>
-                        <h5 class="text-main-purple">
-                          <?= $icon_stat ?>
-                        </h5>
+                  <a class="text-dark text-decoration-none" href="" data-bs-toggle="modal" data-bs-target="#modalProject<?= $row['project_id'] ?>">
+                    <div class="border-bottom project-item">
+                      <div class="d-flex flex-column p-3 justify-content-end">
+                        <div class="d-flex align-item-center justify-content-between m-0">
+                          <h5 class="m-0"><?= $row['project_name'] ?></h5>
+                          <h5 class="text-main-purple">
+                            <?= $icon_stat ?>
+                          </h5>
+                        </div>
+                        <p class="mb-2 fw-light">Fyler: <?= $row['fyler_name'] ?></p>
+                        <p class="m-0 fw-bold text-end fst-italic">Rp<?= number_format($row['project_cost']) ?>.00</p>
                       </div>
-                      <p class="mb-2 fw-light">Fyler: <?= $row['fyler_name'] ?></p>
-                      <p class="m-0 fw-bold text-end fst-italic">Rp<?= number_format($row['project_cost']) ?>.00</p>
+                    </div>
+                  </a>
+
+                  <!-- Project Modal Start -->
+                  <div class="modal fade" id="modalProject<?= $row['project_id'] ?>" tabindex="-1" aria-labelledby="modalProjectLabel" aria-hidden="true">
+                    <?php
+                    $fyler_id = $row['fyler_id'];
+                    $q_fyler = "SELECT * FROM fylers WHERE fyler_id = '$fyler_id'";
+                    $r_fyler = mysqli_query($conn, $q_fyler);
+                    $row_fyler = mysqli_fetch_assoc($r_fyler);
+                    ?>
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-body">
+                          <div class="d-flex w-100 justify-content-between">
+                            <div>
+                              <h1 class="text-capitalize fw-bold"><span class="text-main-purple"><?= $row['project_status'] ?></span> Project</h1>
+                            </div>
+                            <div>
+                              <a class="btn btn-close text-light" type="button" data-bs-dismiss="modal" aria-label="Close"></a>
+                            </div>
+                          </div>
+                          <div class="d-flex p-3 border-bottom">
+                            <div>
+                              <img class="rounded-circle object-fit-cover" src="../assets/images/profiles/fylers/<?= $row_fyler['fyler_photo'] ?>" alt="" width="100px" height="100px">
+                            </div>
+                            <div class="ms-3">
+                              <h3 class="m-0">With <?= $row_fyler['fyler_name'] ?></h3>
+                              <p class="m-0 fs-5"><?= $row_fyler['fyler_cate'] ?></p>
+                              <p class="text-secondary"><?= $row_fyler['account_email'] ?></p>
+                            </div>
+                          </div>
+                          <div class="d-flex w-100 p-3">
+                            <div class="w-75">
+                              <p class="fs-4 fw-bold"><?= $row['project_name'] ?></p>
+                              <p class="fw-light pe-3"><?= $row['project_desc'] ?></p>
+                            </div>
+                            <div class="border-start w-25">
+                              <div class="mb-2 px-3">
+                                <p class="fs-6 m-0">Start Date</p>
+                                <p class="fw-light"><?= $row['project_start'] ?></p>
+                              </div>
+                              <div class="mb-2 px-3">
+                                <p class="fs-6 m-0">End Date</p>
+                                <p class="fw-light"><?= $row['project_end'] ?></p>
+                              </div>
+                              <div class="mb-2 px-3">
+                                <p class="fs-6 m-0">Project Cost</p>
+                                <p class="fw-light">Rp.<?= number_format($row['project_cost']) ?>.00</p>
+                              </div>
+                            </div>
+                          </div>
+                          <?php if ($row['project_status'] == 'unread') { ?>
+                            <div class="w-100 px-3">
+                              <a class="btn btn-light-purple" href="">Decline</a>
+                            </div>
+                          <?php } else if ($row['project_status'] == 'ongoing') { ?>
+                            <div class="d-flex">
+                              <div class="d-flex w-50">
+                                <div class="w-75">
+                                  <p class="fw-light m-0">If you choose not to proceed with this project, please select "Decline."</p>
+                                </div>
+                                <div class="w-25">
+                                  <a class="btn btn-light-purple" href="">Decline</a>
+                                </div>
+                              </div>
+                            </div>
+                          <?php } else if ($row['project_status'] == 'finished') { ?>
+                            <div class="w-100 text-center">
+                              <p class="fw-bold">This Project is finished</p>
+                            </div>
+                          <?php } else { ?>
+                            <div class="w-100 text-center">
+                              <p class="fw-bold">This Project has declined</p>
+                            </div>
+                          <?php } ?>
+                        </div>
+                      </div>
                     </div>
                   </div>
+                  <!-- Project Modal End -->
                 <?php } ?>
                 <!-- Project List End -->
                 <div class="d-flex mt-4 justify-content-evenly" style="font-size: x-small;">
@@ -179,7 +386,7 @@ $r_projects = mysqli_query($conn, $q_projects);
                     finished<i class="fa-solid fa-check fa-sm"></i>
                   </p>
                   <p class="text-main-purple">
-                    decline<i class="fa-solid fa-ban fa-sm"></i>
+                    declined<i class="fa-solid fa-ban fa-sm"></i>
                   </p>
                 </div>
               </div>
@@ -247,7 +454,7 @@ $r_projects = mysqli_query($conn, $q_projects);
     </div>
   </footer>
 
-  <script src="bootstrap/js/bootstrap.js"></script>
+  <script src="../bootstrap/js/bootstrap.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 

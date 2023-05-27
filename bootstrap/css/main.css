@@ -158,13 +158,13 @@
 .c-scale {
   scale: 0.9;
   transition: 500ms;
-  cursor: default;
+  cursor: pointer;
 }
 
 .c-scale:hover {
   scale: 1;
   transition: 500ms;
-  cursor: default;
+  cursor: pointer;
 }
 
 .nav-color {

@@ -167,6 +167,7 @@ if (isset($_SESSION['logged_in'])) {
       </div>
     </div>
   </footer>
+  
   <script src="bootstrap/js/bootstrap.js"></script>
   <script src="bootstrap/js/script.js"></script>
 </body>

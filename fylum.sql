@@ -125,25 +125,25 @@ INSERT INTO `portos` (`porto_id`, `fyler_id`, `porto_name`, `porto_desc`, `porto
 	(3003, 2001, 'Nyepi\'s Poster', 'Creating a Poster for Nyepi\'s Day', '2022-02-22', '4.jpg');
 
 -- Dumping structure for table fylum.projects
-CREATE TABLE IF NOT EXISTS `projects` (
-  `project_id` int(11) NOT NULL AUTO_INCREMENT,
-  `king_id` int(11) NOT NULL,
-  `fyler_id` int(11) NOT NULL,
-  `project_name` varchar(50) NOT NULL,
-  `project_desc` varchar(500) NOT NULL,
-  `project_start` date NOT NULL,
-  `project_end` date NOT NULL,
-  `project_cost` int(11) NOT NULL,
-  `project_tax` int(11) NOT NULL,
-  `project_fee` int(11) NOT NULL,
-  `project_status` varchar(50) NOT NULL,
-  `project_deliv` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`project_id`),
-  KEY `FK_project_king` (`king_id`),
-  KEY `FK_project_fyler` (`fyler_id`),
-  CONSTRAINT `FK_project_fyler` FOREIGN KEY (`fyler_id`) REFERENCES `fylers` (`fyler_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_project_king` FOREIGN KEY (`king_id`) REFERENCES `kings` (`king_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5005 DEFAULT CHARSET=utf8mb4;
+  CREATE TABLE IF NOT EXISTS `projects` (
+    `project_id` int(11) NOT NULL AUTO_INCREMENT,
+    `king_id` int(11) NOT NULL,
+    `fyler_id` int(11) NOT NULL,
+    `project_name` varchar(50) NOT NULL,
+    `project_desc` varchar(500) NOT NULL,
+    `project_start` date NOT NULL,
+    `project_end` date NOT NULL,
+    `project_cost` int(11) NOT NULL,
+    `project_tax` int(11) NOT NULL,
+    `project_fee` int(11) NOT NULL,
+    `project_status` varchar(50) NOT NULL,
+    `project_deliv` varchar(50) DEFAULT NULL,
+    PRIMARY KEY (`project_id`),
+    KEY `FK_project_king` (`king_id`),
+    KEY `FK_project_fyler` (`fyler_id`),
+    CONSTRAINT `FK_project_fyler` FOREIGN KEY (`fyler_id`) REFERENCES `fylers` (`fyler_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+    CONSTRAINT `FK_project_king` FOREIGN KEY (`king_id`) REFERENCES `kings` (`king_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  ) ENGINE=InnoDB AUTO_INCREMENT=5005 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table fylum.projects: ~4 rows (approximately)
 INSERT INTO `projects` (`project_id`, `king_id`, `fyler_id`, `project_name`, `project_desc`, `project_start`, `project_end`, `project_cost`, `project_tax`, `project_fee`, `project_status`, `project_deliv`) VALUES

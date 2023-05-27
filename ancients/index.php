@@ -28,6 +28,8 @@ if (isset($_GET['logout'])) {
   }
 }
 
+
+
 ?>
 
 <?php
@@ -87,23 +89,31 @@ $total_king = mysqli_num_rows($r_king);
           <div class="shadow w-25 rounded-3 mb-3 ps-3 me-3 bg-main-purple">
             <div class="bg-nearly-white text-dark w-100 h-100 p-3 rounded-end-3">
               <h3 class="fw-bold">Total Project</h3>
-              <p class="fw-light fs-5"><?= $total_project ?> Projects</p>
+              <p class="fw-light fs-5">
+                <?= $total_project ?> Projects
+              </p>
               <h1 class="text-end text-main-grey"><i class="fa-solid fa-chart-simple"></i></h1>
             </div>
           </div>
           <div class="shadow w-25 rounded-3 mb-3 me-3 p-3">
             <h3 class="fw-bold">Projects Cost</h3>
-            <p class="fw-light fs-5">Rp.<?= number_format($total_cost) ?>.00</p>
+            <p class="fw-light fs-5">Rp.
+              <?= number_format($total_cost) ?>.00
+            </p>
             <h1 class="text-end text-main-grey"><i class="fa-solid fa-money-bill-transfer"></i></h1>
           </div>
           <div class="shadow w-25 rounded-3 mb-3 me-3 p-3">
             <h3 class="fw-bold">Fyler Active</h3>
-            <p class="fw-light fs-5"><?= $total_fyler ?> Fylers</p>
+            <p class="fw-light fs-5">
+              <?= $total_fyler ?> Fylers
+            </p>
             <h1 class="text-end text-main-grey"><i class="fa-solid fa-laptop"></i></h1>
           </div>
           <div class="shadow w-25 rounded-3 mb-3 p-3">
             <h3 class="fw-bold">Kings Active</h3>
-            <p class="fw-light fs-5"><?= $total_king ?> Kings</p>
+            <p class="fw-light fs-5">
+              <?= $total_king ?> Kings
+            </p>
             <h1 class="text-end text-main-grey"><i class="fa-solid fa-crown"></i></h1>
           </div>
         </div>
@@ -113,14 +123,29 @@ $total_king = mysqli_num_rows($r_king);
               <form action="" method="POST">
                 <div class="d-flex mb-3">
                   <input class="form-control" type="text" name="keyword" placeholder="Search a Fyler...">
-                  <button class="btn btn-purple ms-2" name="btn_search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                  <button class="btn btn-purple ms-2" name="btn_search"><i
+                      class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
               </form>
+              <?php if (isset($_GET['tbl'])) {
+                if ($_GET['tbl'] == 'fyler') {
+                  $btn_king = 'btn-light-purple';
+                  $btn_fyler = 'btn-purple';
+                } else {
+                  $btn_king = 'btn-purple';
+                  $btn_fyler = 'btn-light-purple';
+                }
+              } else {
+                $btn_king = 'btn-light-purple';
+                $btn_fyler = 'btn-purple';
+              } ?>
               <div class="w-100 d-flex">
-                <a class="text-decoration-none shadow w-50 p-4 rounded-3 text-center btn-purple" href="">
+                <a class="text-decoration-none shadow w-50 p-4 rounded-3 text-center <?= $btn_fyler ?>"
+                  href="index.php?tbl=fyler">
                   <h1 class="fw-bold">FYLERS</h1>
                 </a>
-                <a class="shadow w-50 p-4 ms-3 rounded-3 text-center text-decoration-none text-dark btn-light-purple" href="">
+                <a class="shadow w-50 p-4 ms-3 rounded-3 text-center text-decoration-none <?= $btn_king ?>"
+                  href="index.php?tbl=king">
                   <h1 class="fw-bold">KINGS</h1>
                 </a>
               </div>
@@ -128,7 +153,8 @@ $total_king = mysqli_num_rows($r_king);
           </div>
           <div class="shadow w-50 mb-3 rounded-3 px-3">
             <div class="d-flex mx-3 py-3 align-items-center">
-              <img class="object-fit-cover rounded-circle" src="../assets/images/icons/fy_main.png" alt="" height="70px" width="70px">
+              <img class="object-fit-cover rounded-circle" src="../assets/images/icons/fy_main.png" alt="" height="70px"
+                width="70px">
               <div class="d-flex align-items-center justify-content-between w-100">
                 <h4 class="fw-bold ms-3">Ancient</h4>
                 <a class="" href="index.php?logout=1">
@@ -138,7 +164,9 @@ $total_king = mysqli_num_rows($r_king);
             </div>
             <div class="d-flex mx-3 px-2 pt-2 border-top">
               <h5>Balance:</h5>
-              <p class="ms-3">Rp.<?= number_format($ancient_balance) ?>.00</p>
+              <p class="ms-3">Rp.
+                <?= number_format($ancient_balance) ?>.00
+              </p>
             </div>
           </div>
         </div>
@@ -153,13 +181,63 @@ $total_king = mysqli_num_rows($r_king);
                 <th scope="col">Action</th>
               </thead>
               <!-- While -->
-              <tr class="text-center table-row">
-                <td>2001</td>
-                <td>Muhammad Haikal</td>
-                <td>Graphic Designer</td>
-                <td>Bandung, Indonesia</td>
-                <td><a class="link-purple" href=""><i class="fa-solid fa-trash"></i></a></td>
-              </tr>
+              <?php if (isset($_GET['tbl'])) { ?>
+                <?php if ($_GET['tbl'] == 'fyler') { ?>
+                  <?php while ($row = mysqli_fetch_assoc($r_fyler)) { ?>
+                    <tr class="text-center table-row">
+                      <td>
+                        <?= $row['fyler_id'] ?>
+                      </td>
+                      <td>
+                        <?= $row['fyler_name'] ?>
+                      </td>
+                      <td>
+                        <?= $row['fyler_cate'] ?>
+                      </td>
+                      <td>
+                        <?= $row['fyler_add'] ?>
+                      </td>
+                      <td><a class="link-purple" href=""><i class="fa-solid fa-trash"></i></a></td>
+                    </tr>
+                  <?php } ?>
+                <?php } else { ?>
+                  <?php while ($row = mysqli_fetch_assoc($r_king)) { ?>
+                    <tr class="text-center table-row">
+                      <td>
+                        <?= $row['king_id'] ?>
+                      </td>
+                      <td>
+                        <?= $row['king_name'] ?>
+                      </td>
+                      <td>
+                        <?= $row['king_desc'] ?>
+                      </td>
+                      <td>
+                        <?= $row['king_add'] ?>
+                      </td>
+                      <td><a class="link-purple" href=""><i class="fa-solid fa-trash"></i></a></td>
+                    </tr>
+                  <?php } ?>
+                <?php } ?>
+              <?php } else if (!isset($_GET['tbl'])) { ?>
+                <?php while ($row = mysqli_fetch_assoc($r_fyler)) { ?>
+                    <tr class="text-center table-row">
+                      <td>
+                      <?= $row['fyler_id'] ?>
+                      </td>
+                      <td>
+                      <?= $row['fyler_name'] ?>
+                      </td>
+                      <td>
+                      <?= $row['fyler_cate'] ?>
+                      </td>
+                      <td>
+                      <?= $row['fyler_add'] ?>
+                      </td>
+                      <td><a class="link-purple" href=""><i class="fa-solid fa-trash"></i></a></td>
+                    </tr>
+                <?php } ?>
+              <?php } ?>
               <!-- While -->
               <tr class="bg-main-purple w-100">
                 <td class="rounded-bottom-3" colspan="5"></td>
@@ -220,7 +298,8 @@ $total_king = mysqli_num_rows($r_king);
           </div>
         </div>
         <div class="bg-secondary-purple text-center p-2">
-          <p class="text-uppercase fw-semibold m-0" style="font-size: small;">Pleasure in the job puts perfection in the work | Aristotle</p>
+          <p class="text-uppercase fw-semibold m-0" style="font-size: small;">Pleasure in the job puts perfection in the
+            work | Aristotle</p>
           <p class="m-0" style="font-size: x-small;">&copy;2023 | FYLUM COMPANY | ALL RIGHT RESERVED</p>
         </div>
       </div>

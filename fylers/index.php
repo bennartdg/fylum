@@ -277,7 +277,7 @@ $r_projects = mysqli_query($conn, $q_projects);
                         <h3 class="fw-bold">YOUR</h3>
                         <h6 class="fw-bold">PORTO</h6>
                       </div>
-                      <form action="" method="POST" enctype="multipart/form-data">
+                      <form action="actionInsertPorto.php?fyler_id=<?= $fyler_id ?>" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
                           <input class="form-control" type="text" name="porto_name" placeholder="Porto Name" require>
                         </div>
@@ -325,7 +325,7 @@ $r_projects = mysqli_query($conn, $q_projects);
                             <h3 class="fw-bold">YOUR</h3>
                             <h6 class="fw-bold">PORTO</h6>
                           </div>
-                          <form action="" method="POST" enctype="multipart/form-data">
+                          <form action="actionEditPorto.php?porto_id=<?= $row['porto_id']?>&porto_photo=<?= $row['porto_photo'] ?>" method="POST" enctype="multipart/form-data">
                             <div class="mb-3">
                               <input class="form-control" type="text" name="porto_name" placeholder="<?= $row['porto_name'] ?>" require>
                             </div>
@@ -358,7 +358,7 @@ $r_projects = mysqli_query($conn, $q_projects);
                           <p class="text-secondary">Delete this <?= $row['porto_name'] ?> Porto</p>
                           <div>
                             <a class="btn btn-light-purple" style="width: 100px;" href="" data-bs-dismiss="modal" aria-label="Close">Cancel</a>
-                            <a class="btn btn-purple" style="width: 100px;" href="">Delete</a>
+                            <a class="btn btn-purple" style="width: 100px;" href="actionDeletePorto.php?porto_id=<?= $row['porto_id']?>&porto_photo=<?= $row['porto_photo'] ?>">Delete</a>
                           </div>
                         </div>
                       </div>

@@ -64,7 +64,7 @@ $r_projects = mysqli_query($conn, $q_projects);
   <link rel="stylesheet" href="../bootstrap/css/main.css" />
   <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/61f8d3e11d.js" crossorigin="anonymous"></script>
-  <title>FyLum</title>
+  <title>Dashboard King</title>
 </head>
 
 <body class="bg-main-purple">
@@ -198,7 +198,7 @@ $r_projects = mysqli_query($conn, $q_projects);
                           <p class="text-secondary"><?= $row['account_email'] ?></p>
                         </div>
                       </div>
-                      <form class="p-3" action="" method="POST">
+                      <form class="p-3" action="actionInsertProject.php?king_id=<?= $king_id ?>&fyler_id=<?= $row['fyler_id'] ?>" method="POST">
                         <div class="d-flex">
                           <div class="w-50 me-3">
                             <div class="mb-3">
@@ -345,17 +345,17 @@ $r_projects = mysqli_query($conn, $q_projects);
                             </div>
                           </div>
                           <?php if ($row['project_status'] == 'unread') { ?>
-                            <div class="w-100 px-3">
-                              <a class="btn btn-light-purple" href="">Decline</a>
+                            <div class="w-75 px-3 text-end">
+                              <a class="btn btn-light-purple" href="actionDeclineProject.php?project_id=<?= $row['project_id'] ?>">Decline</a>
                             </div>
                           <?php } else if ($row['project_status'] == 'ongoing') { ?>
-                            <div class="d-flex">
-                              <div class="d-flex w-50">
-                                <div class="w-75">
+                            <div class="d-flex px-3">
+                              <div class="d-flex w-75">
+                                <div class="">
                                   <p class="fw-light m-0">If you choose not to proceed with this project, please select "Decline."</p>
                                 </div>
-                                <div class="w-25">
-                                  <a class="btn btn-light-purple" href="">Decline</a>
+                                <div class="ms-2">
+                                  <a class="btn btn-light-purple" href="actionDeclineProject.php?project_id=<?= $row['project_id'] ?>">Decline</a>
                                 </div>
                               </div>
                             </div>

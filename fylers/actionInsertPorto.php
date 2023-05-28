@@ -1,5 +1,5 @@
 <?php
-include ('../server/connection.php');
+include('../server/connection.php');
 
 $fyler_id = $_GET['fyler_id'];
 $path = "../assets/images/portos/" . basename($_FILES['porto_photo']['name']);
@@ -16,11 +16,10 @@ $q_porto = "INSERT INTO portos
             ";
 $r_porto = mysqli_query($conn, $q_porto);
 
-if(move_uploaded_file($_FILES['porto_photo']['tmp_name'], $path)){
-   if($r_porto == true){
-       header('location: index.php?success=1&message=Your Porto has been uploaded');
-    } else {
-        header('location: index.php?success=0&error=Failed to upload');
-    }
+if (move_uploaded_file($_FILES['porto_photo']['tmp_name'], $path)) {
+	if ($r_porto == true) {
+		header('location: index.php?success=1&message=Your Porto has been uploaded');
+	} else {
+		header('location: index.php?success=0&error=Failed to upload');
+	}
 }
-?>

@@ -61,8 +61,8 @@ if (isset($_SESSION['logged_in'])) {
                 <img class="rounded-start-3" src="assets/images/contents/graphicdesigner.jpg" alt="" width="100%">
               </div>
               <div class="w-50">
-                <h6>Graphic & Design</h6>
-                <p style="font-size: small;">UI&UX Design | Landing Page Design | Icon Design</p>
+                <h6>Graphic Designer</h6>
+                <p class="fw-light" style="font-size: small;">UI&UX Design <br> Landing Page Design <br> Icon Design</p>
               </div>
             </div>
           </div>
@@ -74,7 +74,7 @@ if (isset($_SESSION['logged_in'])) {
               </div>
               <div class="w-50">
                 <h6>Architecture Designer</h6>
-                <p style="font-size: small;">Architecture & Interior Design | Landscape Design | Building Engineering </p>
+                <p class="fw-light" style="font-size: small;">Interior Design <br> Landscape Design <br> Building Engineering </p>
               </div>
             </div>
           </div>
@@ -86,7 +86,7 @@ if (isset($_SESSION['logged_in'])) {
               </div>
               <div class="w-50">
                 <h6>Photographer</h6>
-                <p style="font-size: small;">Portrait Photographer | Event Photographers | Real Estate Photographers</p>
+                <p class="fw-light" style="font-size: small;">Portrait Photographer <br> Event Photographers <br> Real Estate Photographers</p>
               </div>
             </div>
           </div>
@@ -167,7 +167,7 @@ if (isset($_SESSION['logged_in'])) {
       </div>
     </div>
   </footer>
-  
+
   <script src="bootstrap/js/bootstrap.js"></script>
   <script src="bootstrap/js/script.js"></script>
 </body>

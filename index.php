@@ -45,7 +45,7 @@ if (isset($_SESSION['logged_in'])) {
   </header>
   <main>
     <div class="container-fluid p-0 m-0">
-      <img class="object-fit-cover p-0" src="assets/images/backgrounds/laptop.jpg" height="800px" width="100%" alt="">
+      <img id="1" class="object-fit-cover p-0" src="assets/images/backgrounds/laptop.jpg" height="800px" width="100%" alt="">
       <div class="position-absolute w-25 top-50 end-0">
         <h1 class="fw-bold text-main-purple">START YOUR JOURNEY TODAY.</h1>
         <div class="">
@@ -98,7 +98,7 @@ if (isset($_SESSION['logged_in'])) {
     </div>
     <!-- about::start -->
     <div class="container-sm mt-5">
-      <section class='row align-content-center justify-content-center gy-5 my-n5' style="margin-top: 7.4em;">
+      <section id="2" class='row align-content-center justify-content-center gy-5 my-n5' style="margin-top: 7.4em;">
         <h2 class='text-center my-5 d-block fw-bold fs-1 text-main-purple fw-bold'>ABOUT</h2>
         <div class="row gy-3">
           <div class="row justify-content-end">
@@ -134,8 +134,8 @@ if (isset($_SESSION['logged_in'])) {
       </section>
       <!-- about::end -->
       <!-- actors::start -->
-      <section class='row align-content-center justify-content-center gy-5' style="margin-top: 3em;">
-        <h2 class='text-center my-5 d-block fw-bold fs-1 text-main-purple fw-bold'>ACTORS</h2>
+      <section id="3" class='row align-content-center justify-content-center gy-5' style="margin-top: 3em;">
+        <h2  class='text-center my-5 d-block fw-bold fs-1 text-main-purple fw-bold'>ACTORS</h2>
         <div class="row">
           <div class="shadow p-5 col-5 rounded-3 mb-5">
             <h3 class="text-main-purple fw-bold">
@@ -169,7 +169,7 @@ if (isset($_SESSION['logged_in'])) {
       </section>
       <!-- actors::end -->
       <!-- contact::start -->
-      <h2 class='text-center my-5 d-block fw-bold fs-1 text-main-purple fw-bold'>OUR TEAM</h2>
+      <h2 id="4" class='text-center my-5 d-block fw-bold fs-1 text-main-purple fw-bold'>OUR TEAM</h2>
       <section class="shadow p-1 rounded-3 mt-3">
         <div class="row">
           <div class="text-center col-4">
@@ -246,13 +246,13 @@ if (isset($_SESSION['logged_in'])) {
           </div>
           <div class="pb-5 d-flex justify-content-center">
             <div class="d-flex justify-content-evenly" style="width: 400px;">
-              <a href="" class="link-light-purple">HOME</a>
+              <a href="#1" class="link-light-purple">HOME</a>
               <span>|</span>
-              <a href="" class="link-light-purple">PROFILE</a>
+              <a href="#2" class="link-light-purple">ABOUT</a>
               <span>|</span>
-              <a href="" class="link-light-purple">ABOUT</a>
+              <a href="#3" class="link-light-purple">ACTORS</a>
               <span>|</span>
-              <a href="" class="link-light-purple">CONTACT</a>
+              <a href="#4" class="link-light-purple">OUR TEAM</a>
             </div>
           </div>
           <div class="text-center pb-5">

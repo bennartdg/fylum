@@ -70,7 +70,7 @@ $total_king = mysqli_num_rows($r_king);
   <link rel="stylesheet" href="../bootstrap/css/main.css" />
   <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/61f8d3e11d.js" crossorigin="anonymous"></script>
-  <title>FyLum</title>
+  <title>Dashboard Ancient</title>
 </head>
 
 <body class="bg-main-purple">

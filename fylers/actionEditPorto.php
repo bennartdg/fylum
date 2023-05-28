@@ -23,12 +23,12 @@ $q_porto = "UPDATE portos SET porto_name = '$porto_name',
 $r_porto = mysqli_query($conn, $q_porto);
 
 if ($r_porto) {
-    if (move_uploaded_file($_FILES['porto_photo']['tmp_name'], $path)) {
-        if (file_exists($old_path)) {
-            unlink($old_path);
-            header('location: index.php?success=1&message=Your Porto has been updated');
-        }
-    }
+	if (file_exists($old_path)) {
+		unlink($old_path);
+		if (move_uploaded_file($_FILES['porto_photo']['tmp_name'], $path)) {
+			header('location: index.php?success=1&message=Your Porto has been updated');
+		}
+	}
 } else {
-    header('location: index.php?success=0&error=Failed to update your porto');
+	header('location: index.php?success=0&error=Failed to update your porto');
 }

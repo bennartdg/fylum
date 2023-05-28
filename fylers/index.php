@@ -66,7 +66,7 @@ $r_projects = mysqli_query($conn, $q_projects);
   <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://kit.fontawesome.com/61f8d3e11d.js" crossorigin="anonymous"></script>
-  <title>FyLum</title>
+  <title>Dashboard Fyler</title>
 </head>
 
 <body class="bg-main-purple">
@@ -202,14 +202,14 @@ $r_projects = mysqli_query($conn, $q_projects);
                         </div>
                         <?php if ($row['project_status'] == 'unread') { ?>
                           <div class="w-100 text-end pe-3">
-                            <a class="btn btn-light-purple" href="">Decline</a>
-                            <a class="btn btn-purple" href="">Accept</a>
+                            <a class="btn btn-light-purple" href="actionDeclineProject.php?project_id=<?= $row['project_id'] ?>">Decline</a>
+                            <a class="btn btn-purple" href="actionAcceptProject.php?project_id=<?= $row['project_id'] ?>">Accept</a>
                           </div>
                         <?php } else if ($row['project_status'] == 'ongoing') { ?>
                           <div class="d-flex">
                             <div class="px-3 w-50">
-                              <form class="d-flex" action="" method="POST" enctype="multipart/form-data">
-                                <input class="form-control" type="file">
+                              <form class="d-flex" action="actionFinishProject.php?project_id=<?= $row['project_id'] ?>" method="POST" enctype="multipart/form-data">
+                                <input class="form-control" type="file" name="project_deliv">
                                 <input class="btn btn-purple" type="submit" value="Submit">
                               </form>
                             </div>
@@ -218,17 +218,17 @@ $r_projects = mysqli_query($conn, $q_projects);
                                 <p class="fw-light m-0">If you choose not to proceed with this project, please select "Decline."</p>
                               </div>
                               <div class="w-25">
-                                <a class="btn btn-light-purple" href="">Decline</a>
+                                <a class="btn btn-light-purple" href="actionDeclineProject.php?project_id=<?= $row['project_id'] ?>">Decline</a>
                               </div>
                             </div>
                           </div>
                         <?php } else if ($row['project_status'] == 'finished') { ?>
                           <div class="w-100 text-center">
-                            <p class="fw-bold">You already finish this project</p>
+                            <p class="fw-bold">This Project is finished</p>
                           </div>
                         <?php } else { ?>
                           <div class="w-100 text-center">
-                            <p class="fw-bold">You declined this project</p>
+                            <p class="fw-bold">This Project has declined</p>
                           </div>
                         <?php } ?>
                       </div>
@@ -325,7 +325,7 @@ $r_projects = mysqli_query($conn, $q_projects);
                             <h3 class="fw-bold">YOUR</h3>
                             <h6 class="fw-bold">PORTO</h6>
                           </div>
-                          <form action="actionEditPorto.php?porto_id=<?= $row['porto_id']?>&porto_photo=<?= $row['porto_photo'] ?>" method="POST" enctype="multipart/form-data">
+                          <form action="actionEditPorto.php?porto_id=<?= $row['porto_id'] ?>&porto_photo=<?= $row['porto_photo'] ?>" method="POST" enctype="multipart/form-data">
                             <div class="mb-3">
                               <input class="form-control" type="text" name="porto_name" placeholder="<?= $row['porto_name'] ?>" require>
                             </div>
@@ -358,7 +358,7 @@ $r_projects = mysqli_query($conn, $q_projects);
                           <p class="text-secondary">Delete this <?= $row['porto_name'] ?> Porto</p>
                           <div>
                             <a class="btn btn-light-purple" style="width: 100px;" href="" data-bs-dismiss="modal" aria-label="Close">Cancel</a>
-                            <a class="btn btn-purple" style="width: 100px;" href="actionDeletePorto.php?porto_id=<?= $row['porto_id']?>&porto_photo=<?= $row['porto_photo'] ?>">Delete</a>
+                            <a class="btn btn-purple" style="width: 100px;" href="actionDeletePorto.php?porto_id=<?= $row['porto_id'] ?>&porto_photo=<?= $row['porto_photo'] ?>">Delete</a>
                           </div>
                         </div>
                       </div>

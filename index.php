@@ -73,12 +73,10 @@ if (isset($_SESSION['logged_in'])) {
               </div>
               <div class="w-50">
                 <h6>Architecture Designer</h6>
-<<<<<<< HEAD
                 <p style="font-size: small;">Architecture & Interior Design | Landscape Design | Building Engineering
                 </p>
-=======
-                <p class="fw-light" style="font-size: small;">Interior Design <br> Landscape Design <br> Building Engineering </p>
->>>>>>> 52e1f9053e98f43fce1c8622568dd8548678438f
+                <p class="fw-light" style="font-size: small;">Interior Design <br> Landscape Design <br> Building
+                  Engineering </p>
               </div>
             </div>
           </div>
@@ -90,7 +88,8 @@ if (isset($_SESSION['logged_in'])) {
               </div>
               <div class="w-50">
                 <h6>Photographer</h6>
-                <p class="fw-light" style="font-size: small;">Portrait Photographer <br> Event Photographers <br> Real Estate Photographers</p>
+                <p class="fw-light" style="font-size: small;">Portrait Photographer <br> Event Photographers <br> Real
+                  Estate Photographers</p>
               </div>
             </div>
           </div>
@@ -138,21 +137,24 @@ if (isset($_SESSION['logged_in'])) {
       </section>
       <!-- about::end -->
       <!-- contact::start -->
+      <h2 class='text-center my-5 d-block fw-bold fs-1 text-main-purple fw-bold'>OUR TEAM</h2>
       <section class="shadow p-1 rounded-3 mt-3">
-        <h2 class='text-center my-5 d-block fw-bold fs-1 text-main-purple fw-bold'>OUR TEAM</h2>
         <div class="row">
           <div class="text-center col-4">
-            <img src="assets/images/contact/ben.jpg" class="rounded-circle object-fit-cover" height="200px" width="200px" alt="">
+            <img src="assets/images/contact/ben.jpg" class="rounded-circle object-fit-cover" height="200px"
+              width="200px" alt="">
             <p class="m-0 p-1">Bennart Dem Gunawan</p>
             <p>162021021</p>
           </div>
           <div class="text-center col-4">
-            <img src="assets/images/contact/atha.png" class="rounded-circle object-fit-cover" height="200px" width="200px" alt="">
+            <img src="assets/images/contact/atha.png" class="rounded-circle object-fit-cover" height="200px"
+              width="200px" alt="">
             <p class="m-0 p-1">Hasnaura Atha</p>
             <p>162021028</p>
           </div>
           <div class="text-center col-4">
-            <img src="assets/images/contact/haikal.jpg" class="rounded-circle object-fit-cover" height="200px" width="200px" alt="">
+            <img src="assets/images/contact/haikal.jpg" class="rounded-circle object-fit-cover" height="200px"
+              width="200px" alt="">
             <p class="m-0 p-1">Muhammad Haikal</p>
             <p>162021029</p>
           </div>

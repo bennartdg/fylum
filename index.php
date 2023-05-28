@@ -73,8 +73,6 @@ if (isset($_SESSION['logged_in'])) {
               </div>
               <div class="w-50">
                 <h6>Architecture Designer</h6>
-                <p style="font-size: small;">Architecture & Interior Design | Landscape Design | Building Engineering
-                </p>
                 <p class="fw-light" style="font-size: small;">Interior Design <br> Landscape Design <br> Building
                   Engineering </p>
               </div>
@@ -135,7 +133,7 @@ if (isset($_SESSION['logged_in'])) {
       <!-- about::end -->
       <!-- actors::start -->
       <section id="3" class='row align-content-center justify-content-center gy-5' style="margin-top: 3em;">
-        <h2  class='text-center my-5 d-block fw-bold fs-1 text-main-purple fw-bold'>ACTORS</h2>
+        <h2 class='text-center my-5 d-block fw-bold fs-1 text-main-purple fw-bold'>ACTORS</h2>
         <div class="row">
           <div class="shadow p-5 col-5 rounded-3 mb-5">
             <h3 class="text-main-purple fw-bold">
@@ -170,24 +168,21 @@ if (isset($_SESSION['logged_in'])) {
       <!-- actors::end -->
       <!-- contact::start -->
       <h2 id="4" class='text-center my-5 d-block fw-bold fs-1 text-main-purple fw-bold'>OUR TEAM</h2>
-      <section class="shadow p-1 rounded-3 mt-3">
-        <div class="row">
+      <section class="shadow rounded-3 mt-3">
+        <div class="row p-5">
           <div class="text-center col-4">
-            <img src="assets/images/contact/ben.jpg" class="rounded-circle object-fit-cover" height="200px"
-              width="200px" alt="">
-            <p class="m-0 p-1">Bennart Dem Gunawan</p>
+            <img src="assets/images/contact/ben.jpg" class="rounded-circle object-fit-cover" height="200px" width="200px" alt="">
+            <p class="m-0 p-1 fs-5">Bennart Dem Gunawan</p>
             <p>162021021</p>
           </div>
           <div class="text-center col-4">
-            <img src="assets/images/contact/atha.png" class="rounded-circle object-fit-cover" height="200px"
-              width="200px" alt="">
-            <p class="m-0 p-1">Hasnaura Atha</p>
+            <img src="assets/images/contact/atha.png" class="rounded-circle object-fit-cover" height="200px" width="200px" alt="">
+            <p class="m-0 p-1 fs-5">Hasnaura Atha</p>
             <p>162021028</p>
           </div>
           <div class="text-center col-4">
-            <img src="assets/images/contact/haikal.jpg" class="rounded-circle object-fit-cover" height="200px"
-              width="200px" alt="">
-            <p class="m-0 p-1">Muhammad Haikal</p>
+            <img src="assets/images/contact/haikal.jpg" class="rounded-circle object-fit-cover" height="200px" width="200px" alt="">
+            <p class="m-0 p-1 fs-5">Muhammad Haikal</p>
             <p>162021029</p>
           </div>
         </div>

@@ -263,6 +263,19 @@ $r_projects = mysqli_query($conn, $q_projects);
               <p><?= $fyler_desc ?></p>
             </div>
             <div class="px-5">
+              <!-- Alert Start -->
+              <?php if (isset($_GET["success"]) && $_GET["success"] == true) { ?>
+                <div id="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+                  <?php echo $_GET['message'] ?>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              <?php } else if (isset($_GET['success']) && $_GET['success'] == false) { ?>
+                <div id="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <?php echo $_GET['error'] ?>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              <?php } ?>
+              <!-- Alert End -->
               <div class="d-flex align-items-center justify-content-between">
                 <h3 class="fw-bold m-0">MY PORTO</h3>
                 <a class="link-purple c-scale" href="" data-bs-toggle="modal" data-bs-target="#modalInsertPorto"><i class="fa-solid fa-plus fa-xl"></i></a>
@@ -375,61 +388,7 @@ $r_projects = mysqli_query($conn, $q_projects);
     </div>
   </main>
 
-  <footer class="pt-5 bg-nearly-white">
-    <div class="pt-5">
-      <div class="container-fluid bg-dark p-0">
-        <div class="container">
-          <div class="d-flex justify-content-center p-5">
-            <a class="text-light text-decoration-none" href="">
-              <div class="d-flex align-items-center justify-content-center btn-purple btn-circle rounded-circle mx-2">
-                <i class="fa-brands fa-facebook-f"></i>
-              </div>
-            </a>
-            <a class="text-light text-decoration-none" href="">
-              <div class="d-flex align-items-center justify-content-center btn-purple btn-circle rounded-circle mx-2">
-                <i class="fa-brands fa-google"></i>
-              </div>
-            </a>
-            <a class="text-light text-decoration-none" href="">
-              <div class="d-flex align-items-center justify-content-center btn-purple btn-circle rounded-circle mx-2">
-                <i class="fa-brands fa-instagram"></i>
-              </div>
-            </a>
-            <a class="text-light text-decoration-none" href="">
-              <div class="d-flex align-items-center justify-content-center btn-purple btn-circle rounded-circle mx-2">
-                <i class="fa-brands fa-linkedin"></i>
-              </div>
-            </a>
-            <a class="text-light text-decoration-none" href="https://github.com/bennartdg/fylum" target="_blank">
-              <div class="d-flex align-items-center justify-content-center btn-purple btn-circle rounded-circle mx-2">
-                <i class="fa-brands fa-github"></i>
-              </div>
-            </a>
-          </div>
-          <div class="pb-5 d-flex justify-content-center">
-            <div class="d-flex justify-content-evenly" style="width: 400px;">
-              <a href="" class="link-light-purple">HOME</a>
-              <span>|</span>
-              <a href="" class="link-light-purple">PROFILE</a>
-              <span>|</span>
-              <a href="" class="link-light-purple">ABOUT</a>
-              <span>|</span>
-              <a href="" class="link-light-purple">CONTACT</a>
-            </div>
-          </div>
-          <div class="text-center pb-5">
-            <a href="index.php">
-              <img src="../assets/images/icons/fylum_light.png" alt="" height="40px">
-            </a>
-          </div>
-        </div>
-        <div class="bg-secondary-purple text-center p-2">
-          <p class="text-uppercase fw-semibold m-0" style="font-size: small;">Pleasure in the job puts perfection in the work | Aristotle</p>
-          <p class="m-0" style="font-size: x-small;">&copy;2023 | FYLUM COMPANY | ALL RIGHT RESERVED</p>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <?php include('../layouts/footer.php'); ?>
 
   <script src="../bootstrap/js/bootstrap.js"></script>
 </body>

@@ -170,6 +170,9 @@
 .nav-color {
   background-color: #fcfcfc;
   transition: all 500ms ease-in-out;
+  box-shadow: 0px 4px 36px 0px rgba(0, 0, 0, 0.28);
+  -webkit-box-shadow: 0px 4px 36px 0px rgba(0, 0, 0, 0.28);
+  -moz-box-shadow: 0px 4px 36px 0px rgba(0, 0, 0, 0.28);
 }
 
 .nav-transparent {
@@ -195,4 +198,4 @@
 
 .table-row:hover {
   background-color: #dbdbdb;
-} 
+}

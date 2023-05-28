@@ -47,15 +47,34 @@ $total_cost = $row_t_cost['total_cost'];
 ?>
 
 <?php
-$q_fyler = "SELECT * FROM fylers";
+if (isset($_POST['btn_search_Fyler'])) {
+  $keyword = $_POST['keyword'];
+  $q_fyler = "SELECT * FROM fylers WHERE fyler_id LIKE '%$keyword%' OR
+  fyler_name LIKE '%$keyword%' OR fyler_cate LIKE '%$keyword%' OR fyler_add LIKE '%$keyword%'";
+} else {
+  $q_fyler = "SELECT * FROM fylers";
+}
 $r_fyler = mysqli_query($conn, $q_fyler);
-$total_fyler = mysqli_num_rows($r_fyler);
+
+$q_fyler_all = "SELECT * FROM fylers";
+$r_fyler_all = mysqli_query($conn, $q_fyler_all);
+$total_fyler = mysqli_num_rows($r_fyler_all);
 ?>
 
 <?php
-$q_king = "SELECT * FROM kings";
+
+if (isset($_POST['btn_search_King'])) {
+  $keyword = $_POST['keyword'];
+  $q_king = "SELECT * FROM kings WHERE king_id LIKE '%$keyword%' OR
+  king_name LIKE '%$keyword%' OR king_desc LIKE '%$keyword%' OR king_add LIKE '%$keyword%'";
+} else {
+  $q_king = "SELECT * FROM kings";
+}
 $r_king = mysqli_query($conn, $q_king);
-$total_king = mysqli_num_rows($r_king);
+
+$q_king_all = "SELECT * FROM kings";
+$r_king_all = mysqli_query($conn, $q_king_all);
+$total_king = mysqli_num_rows($r_king_all);
 ?>
 
 <!DOCTYPE html>
@@ -120,11 +139,19 @@ $total_king = mysqli_num_rows($r_king);
         <div class="d-flex mt-5">
           <div class="w-50 mb-3 me-3">
             <div class="w-100">
+              <?php if (isset($_GET['tbl'])) {
+                if ($_GET['tbl'] == 'fyler') {
+                  $indicator = 'Fyler';
+                } else {
+                  $indicator = 'King';
+                }
+              } else {
+                $indicator = 'Fyler';
+              } ?>
               <form action="" method="POST">
                 <div class="d-flex mb-3">
-                  <input class="form-control" type="text" name="keyword" placeholder="Search a Fyler...">
-                  <button class="btn btn-purple ms-2" name="btn_search"><i
-                      class="fa-solid fa-magnifying-glass"></i></button>
+                  <input class="form-control" type="text" name="keyword" placeholder="Search a <?= $indicator ?>...">
+                  <button class="btn btn-purple ms-2" type="submit" name="btn_search_<?= $indicator ?>"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
               </form>
               <?php if (isset($_GET['tbl'])) {
@@ -140,12 +167,10 @@ $total_king = mysqli_num_rows($r_king);
                 $btn_fyler = 'btn-purple';
               } ?>
               <div class="w-100 d-flex">
-                <a class="text-decoration-none shadow w-50 p-4 rounded-3 text-center <?= $btn_fyler ?>"
-                  href="index.php?tbl=fyler">
+                <a class="text-decoration-none shadow w-50 p-4 rounded-3 text-center <?= $btn_fyler ?>" href="index.php?tbl=fyler">
                   <h1 class="fw-bold">FYLERS</h1>
                 </a>
-                <a class="shadow w-50 p-4 ms-3 rounded-3 text-center text-decoration-none <?= $btn_king ?>"
-                  href="index.php?tbl=king">
+                <a class="shadow w-50 p-4 ms-3 rounded-3 text-center text-decoration-none <?= $btn_king ?>" href="index.php?tbl=king">
                   <h1 class="fw-bold">KINGS</h1>
                 </a>
               </div>
@@ -153,8 +178,7 @@ $total_king = mysqli_num_rows($r_king);
           </div>
           <div class="shadow w-50 mb-3 rounded-3 px-3">
             <div class="d-flex mx-3 py-3 align-items-center">
-              <img class="object-fit-cover rounded-circle" src="../assets/images/icons/fy_main.png" alt="" height="70px"
-                width="70px">
+              <img class="object-fit-cover rounded-circle" src="../assets/images/icons/fy_main.png" alt="" height="70px" width="70px">
               <div class="d-flex align-items-center justify-content-between w-100">
                 <h4 class="fw-bold ms-3">Ancient</h4>
                 <a class="" href="index.php?logout=1">
@@ -170,15 +194,35 @@ $total_king = mysqli_num_rows($r_king);
             </div>
           </div>
         </div>
+
+        <!-- Alert Start -->
+        <?php if (isset($_GET["success"]) && $_GET["success"] == true) { ?>
+          <div id="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+            <?php echo $_GET['message'] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <?php } else if (isset($_GET['success']) && $_GET['success'] == false) { ?>
+          <div id="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?php echo $_GET['error'] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <?php } ?>
+        <!-- Alert End -->
+
         <div class="shadow rounded-3">
           <div class="w-100">
             <table class="table">
               <thead class="text-center fw-bold">
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
-                <th scope="col">Category</th>
-                <th scope="col">Address</th>
-                <th scope="col">Action</th>
+                <?php if ($indicator == 'Fyler') { ?>
+                  <th scope="col">Category</th>
+                  <th scope="col">Address</th>
+                <?php } else { ?>
+                  <th scope="col">Description</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Action</th>
+                <?php } ?>
               </thead>
               <!-- While -->
               <?php if (isset($_GET['tbl'])) { ?>
@@ -197,7 +241,6 @@ $total_king = mysqli_num_rows($r_king);
                       <td>
                         <?= $row['fyler_add'] ?>
                       </td>
-                      <td><a class="link-purple" href=""><i class="fa-solid fa-trash"></i></a></td>
                     </tr>
                   <?php } ?>
                 <?php } else { ?>
@@ -215,27 +258,67 @@ $total_king = mysqli_num_rows($r_king);
                       <td>
                         <?= $row['king_add'] ?>
                       </td>
-                      <td><a class="link-purple" href=""><i class="fa-solid fa-trash"></i></a></td>
+                      <td>
+                        <a class="btn btn-purple" href="" data-bs-toggle="modal" data-bs-target="#modalTopup<?= $row['king_id'] ?>">
+                          <i class="fa-solid fa-wallet"></i>
+                        </a>
+                      </td>
                     </tr>
+
+                    <!-- Modal Topup Start -->
+                    <div class="modal fade" id="modalTopup<?= $row['king_id'] ?>" tabindex="-1" aria-labelledby="modalTopupLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-body">
+                            <div class="d-flex align-items-end text-main-purple w-100 justify-content-between">
+                              <h1 class="fw-bold">TOPUP</h1>
+                              <h3 class="fw-bold">TOPUP</h3>
+                              <h6 class="fw-bold">KINGS</h6>
+                            </div>
+                            <div class="d-flex p-3">
+                              <div class="w-75">
+                                <div class="d-flex align-items-center">
+                                  <div>
+                                    <img class="rounded-circle object-fit-cover" src="../assets/images/profiles/kings/<?= $row['king_photo'] ?>" alt="" height="100px" width="100px">
+                                  </div>
+                                  <div class="ms-3">
+                                    <p class="m-0">#<?= $row['king_id'] ?></p>
+                                    <p class="m-0 fs-4"><?= $row['king_name'] ?></p>
+                                    <p class="m-0 text-secondary"><?= $row['account_email'] ?></p>
+                                  </div>
+                                </div>
+                                <form action="actionTopup.php?king_id=<?= $row['king_id'] ?>" method="POST">
+                                  <div class="mt-3 d-flex">
+                                    <input class="form-control" type="text" name="king_balance" placeholder="Rp.">
+                                    <input class="btn btn-purple" type="submit" value="Topup">
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Modal Topup End -->
+
                   <?php } ?>
                 <?php } ?>
               <?php } else if (!isset($_GET['tbl'])) { ?>
                 <?php while ($row = mysqli_fetch_assoc($r_fyler)) { ?>
-                    <tr class="text-center table-row">
-                      <td>
+                  <tr class="text-center table-row">
+                    <td>
                       <?= $row['fyler_id'] ?>
-                      </td>
-                      <td>
+                    </td>
+                    <td>
                       <?= $row['fyler_name'] ?>
-                      </td>
-                      <td>
+                    </td>
+                    <td>
                       <?= $row['fyler_cate'] ?>
-                      </td>
-                      <td>
+                    </td>
+                    <td>
                       <?= $row['fyler_add'] ?>
-                      </td>
-                      <td><a class="link-purple" href=""><i class="fa-solid fa-trash"></i></a></td>
-                    </tr>
+                    </td>
+                  </tr>
                 <?php } ?>
               <?php } ?>
               <!-- While -->
@@ -249,64 +332,9 @@ $total_king = mysqli_num_rows($r_king);
     </div>
   </main>
 
-  <footer>
-    <div>
-      <div class="container-fluid bg-dark p-0">
-        <div class="container">
-          <div class="d-flex justify-content-center p-5">
-            <a class="text-light text-decoration-none" href="">
-              <div class="d-flex align-items-center justify-content-center btn-purple btn-circle rounded-circle mx-2">
-                <i class="fa-brands fa-facebook-f"></i>
-              </div>
-            </a>
-            <a class="text-light text-decoration-none" href="">
-              <div class="d-flex align-items-center justify-content-center btn-purple btn-circle rounded-circle mx-2">
-                <i class="fa-brands fa-google"></i>
-              </div>
-            </a>
-            <a class="text-light text-decoration-none" href="">
-              <div class="d-flex align-items-center justify-content-center btn-purple btn-circle rounded-circle mx-2">
-                <i class="fa-brands fa-instagram"></i>
-              </div>
-            </a>
-            <a class="text-light text-decoration-none" href="">
-              <div class="d-flex align-items-center justify-content-center btn-purple btn-circle rounded-circle mx-2">
-                <i class="fa-brands fa-linkedin"></i>
-              </div>
-            </a>
-            <a class="text-light text-decoration-none" href="https://github.com/bennartdg/fylum" target="_blank">
-              <div class="d-flex align-items-center justify-content-center btn-purple btn-circle rounded-circle mx-2">
-                <i class="fa-brands fa-github"></i>
-              </div>
-            </a>
-          </div>
-          <div class="pb-5 d-flex justify-content-center">
-            <div class="d-flex justify-content-evenly" style="width: 400px;">
-              <a href="" class="link-light-purple">HOME</a>
-              <span>|</span>
-              <a href="" class="link-light-purple">PROFILE</a>
-              <span>|</span>
-              <a href="" class="link-light-purple">ABOUT</a>
-              <span>|</span>
-              <a href="" class="link-light-purple">CONTACT</a>
-            </div>
-          </div>
-          <div class="text-center pb-5">
-            <a href="index.php">
-              <img src="../assets/images/icons/fylum_light.png" alt="" height="40px">
-            </a>
-          </div>
-        </div>
-        <div class="bg-secondary-purple text-center p-2">
-          <p class="text-uppercase fw-semibold m-0" style="font-size: small;">Pleasure in the job puts perfection in the
-            work | Aristotle</p>
-          <p class="m-0" style="font-size: x-small;">&copy;2023 | FYLUM COMPANY | ALL RIGHT RESERVED</p>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <?php include('../layouts/footer.php'); ?>
 
-  <script src="bootstrap/js/bootstrap.js"></script>
+  <script src="../bootstrap/js/bootstrap.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 

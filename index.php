@@ -101,53 +101,73 @@ if (isset($_SESSION['logged_in'])) {
       <section class='row align-content-center justify-content-center gy-5 my-n5' style="margin-top: 7.4em;">
         <h2 class='text-center my-5 d-block fw-bold fs-1 text-main-purple fw-bold'>ABOUT</h2>
         <div class="row gy-3">
-        <div class="row justify-content-end">
+          <div class="row justify-content-end">
             <div class="shadow p-5 text-center rounded-3 mb-5">
-              <h3 class="text-secondary-purple fw-light">
-                Philosophies
+              <h3 class="text-main-purple fw-bold">
+                Description
               </h3>
               <p class="">
-              FyLum dari kata Phylum/Phylon merupakan tingkat klasifikasi atau peringkat taksonomi di bawah kerajaan (kingdom) dan di atas kelas (class). 
-
-              Terinspirasi dari sebuah kelompok binatang pada sebuah tingkatan, dimana Fylum berada dibawah tingkat Kingdom. Fylum menggambarkan sebuah kelompok orang-orang yang memiliki kebebasan dalam mencari dan menemukan client untuk melakukan pekerjaan. Layaknya seperti binatang yang hidup bebas untuk mencari makanan dan bertahan hidup. 
-
-              Kingdom yang mana kerajaan menggambarkan sebuah client/perusahaan yang memiliki value lebih besar dan membutuhkan jasa seorang/sekelompok freelancer.
-              </p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="shadow p-5 col-5 rounded-3 mb-5">
-              <h3 class="text-secondary-purple fw-light">
-                Ancient | Admin
-              </h3>
-              <p class="">
-                Ancient/admin is a person or user who manages all transactions and data in Fylum. 
+                FyLum is a platform for freelancers to find projects and people/companies that need services from
+                freelancers depending on their needs.
               </p>
             </div>
           </div>
           <div class="row justify-content-end">
-            <div class="shadow p-5 col-5 text-end rounded-3 mb-5">
-              <h3 class="text-secondary-purple fw-light">
-                King | Client
+            <div class="shadow p-5 text-center rounded-3 mb-5">
+              <h3 class="text-main-purple fw-bold">
+                Philosophies
               </h3>
               <p class="">
-                King/Kingdom is a representation of person or company that requires services from fylers. 
-              </p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="shadow p-5 col-5 rounded-3 mb-5">
-              <h3 class="text-secondary-purple fw-light">
-                Fyler | Freelancer
-              </h3>
-              <p class="">
-                Flyers are a person or a team who have the ability and need a job/project.
+                FyLum from the word Phylum/Phylon is the level of classification or taxonomic rank below the kingdom and
+                above the class.
+
+                Inspired by a group of animals on a level, where the Phylum is below the Kingdom level. Phylum describes
+                a group of people who have the freedom to seek and find clients to do work. Just like animals that live
+                freely to find food and survive.
+
+                Kingdom where the kingdom describes a client/company that has greater value and requires the services of
+                a person/group of freelancers.
               </p>
             </div>
           </div>
         </div>
       </section>
       <!-- about::end -->
+      <!-- actors::start -->
+      <section class='row align-content-center justify-content-center gy-5' style="margin-top: 3em;">
+        <h2 class='text-center my-5 d-block fw-bold fs-1 text-main-purple fw-bold'>ACTORS</h2>
+        <div class="row">
+          <div class="shadow p-5 col-5 rounded-3 mb-5">
+            <h3 class="text-main-purple fw-bold">
+              Ancient | Admin
+            </h3>
+            <p class="">
+              Ancient/admin is a person or user who manages all transactions and data in Fylum.
+            </p>
+          </div>
+        </div>
+        <div class="row justify-content-end">
+          <div class="shadow p-5 col-5 text-end rounded-3 mb-5">
+            <h3 class="text-main-purple fw-bold">
+              King | Client
+            </h3>
+            <p class="">
+              King/Kingdom is a representation of person or company that requires services from fylers.
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="shadow p-5 col-5 rounded-3 mb-5">
+            <h3 class="text-main-purple fw-bold">
+              Fyler | Freelancer
+            </h3>
+            <p class="">
+              Flyers are a person or a team who have the ability and need a job/project.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- actors::end -->
       <!-- contact::start -->
       <h2 class='text-center my-5 d-block fw-bold fs-1 text-main-purple fw-bold'>OUR TEAM</h2>
       <section class="shadow p-1 rounded-3 mt-3">
@@ -172,6 +192,7 @@ if (isset($_SESSION['logged_in'])) {
           </div>
         </div>
       </section>
+      <!-- contact::end -->
     </div>
   </main>
 

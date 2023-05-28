@@ -101,13 +101,27 @@ if (isset($_SESSION['logged_in'])) {
       <section class='row align-content-center justify-content-center gy-5 my-n5' style="margin-top: 7.4em;">
         <h2 class='text-center my-5 d-block fw-bold fs-1 text-main-purple fw-bold'>ABOUT</h2>
         <div class="row gy-3">
+        <div class="row justify-content-end">
+            <div class="shadow p-5 text-center rounded-3 mb-5">
+              <h3 class="text-secondary-purple fw-light">
+                Philosophies
+              </h3>
+              <p class="">
+              FyLum dari kata Phylum/Phylon merupakan tingkat klasifikasi atau peringkat taksonomi di bawah kerajaan (kingdom) dan di atas kelas (class). 
+
+              Terinspirasi dari sebuah kelompok binatang pada sebuah tingkatan, dimana Fylum berada dibawah tingkat Kingdom. Fylum menggambarkan sebuah kelompok orang-orang yang memiliki kebebasan dalam mencari dan menemukan client untuk melakukan pekerjaan. Layaknya seperti binatang yang hidup bebas untuk mencari makanan dan bertahan hidup. 
+
+              Kingdom yang mana kerajaan menggambarkan sebuah client/perusahaan yang memiliki value lebih besar dan membutuhkan jasa seorang/sekelompok freelancer.
+              </p>
+            </div>
+          </div>
           <div class="row">
             <div class="shadow p-5 col-5 rounded-3 mb-5">
               <h3 class="text-secondary-purple fw-light">
                 Ancient | Admin
               </h3>
               <p class="">
-                Ancient/admin is a person or user who manages all transactions and data in a Fylum
+                Ancient/admin is a person or user who manages all transactions and data in Fylum. 
               </p>
             </div>
           </div>
@@ -117,8 +131,7 @@ if (isset($_SESSION['logged_in'])) {
                 King | Client
               </h3>
               <p class="">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit eum ad, exercitationem, quo quod quos ab
-                laboriosam, non natus nesciunt molestiae nam iusto odit deleniti totam vel tempora minima amet.
+                King/Kingdom is a representation of person or company that requires services from fylers. 
               </p>
             </div>
           </div>
@@ -128,8 +141,7 @@ if (isset($_SESSION['logged_in'])) {
                 Fyler | Freelancer
               </h3>
               <p class="">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit eum ad, exercitationem, quo quod quos ab
-                laboriosam, non natus nesciunt molestiae nam iusto odit deleniti totam vel tempora minima amet.
+                Flyers are a person or a team who have the ability and need a job/project.
               </p>
             </div>
           </div>

@@ -29,7 +29,7 @@ if (isset($_SESSION['logged_in'])) {
   <title>FyLum</title>
 </head>
 
-<body class="bg-main-purple">
+<body class="bg-main-light">
   <header>
     <nav class="navbar p-0 fixed-top nav-transparent">
       <div class="container-fluid w-75 py-2">
@@ -46,14 +46,14 @@ if (isset($_SESSION['logged_in'])) {
   <main>
     <div class="container-fluid p-0 m-0">
       <img class="object-fit-cover p-0" src="assets/images/backgrounds/laptop.jpg" height="800px" width="100%" alt="">
-      <div class="position-absolute w-25 top-50 end-0 ">
+      <div class="position-absolute w-25 top-50 end-0">
         <h1 class="fw-bold text-main-purple">START YOUR JOURNEY TODAY.</h1>
         <div class="">
           <a class="btn btn-transparent-purple m-2" href="registerFyler.php">JOIN AS FYLER</a>
           <a class="btn btn-purple m-2" href="registerKing.php">RECRUIT A FYLER</a>
         </div>
       </div>
-      <section class="container w-75 d-flex justify-content-center position-absolute start-50 translate-middle">
+      <section class="container w-75 d-flex justify-content-center position-absolute start-50 translate-middle mb-1">
         <div class="row">
           <div class="c-scale col-lg-4 col-sm-4 p-2">
             <div class="d-flex flex-row bg-light shadow text-dark align-items-center text-center rounded-3">
@@ -66,7 +66,6 @@ if (isset($_SESSION['logged_in'])) {
               </div>
             </div>
           </div>
-
           <div class="c-scale col-lg-4 col-sm-4 p-2">
             <div class="d-flex flex-row bg-light shadow text-dark align-items-center text-center rounded-3">
               <div class="w-50">
@@ -74,7 +73,8 @@ if (isset($_SESSION['logged_in'])) {
               </div>
               <div class="w-50">
                 <h6>Architecture Designer</h6>
-                <p style="font-size: small;">Architecture & Interior Design | Landscape Design | Building Engineering </p>
+                <p style="font-size: small;">Architecture & Interior Design | Landscape Design | Building Engineering
+                </p>
               </div>
             </div>
           </div>
@@ -89,6 +89,68 @@ if (isset($_SESSION['logged_in'])) {
                 <p style="font-size: small;">Portrait Photographer | Event Photographers | Real Estate Photographers</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- about::start -->
+    <div class="container-sm mt-5">
+      <section class='row align-content-center justify-content-center gy-5 my-n5' style="margin-top: 7.4em;">
+        <h2 class='text-center my-5 d-block fw-bold fs-1 text-main-purple fw-bold'>ABOUT</h2>
+        <div class="row gy-3">
+          <div class="row">
+            <div class="shadow p-5 col-5 rounded-3 mb-5">
+              <h3 class="text-secondary-purple fw-light">
+                Ancient | Admin
+              </h3>
+              <p class="">
+                Ancient/admin is a person or user who manages all transactions and data in a Fylum
+              </p>
+            </div>
+          </div>
+          <div class="row justify-content-end">
+            <div class="shadow p-5 col-5 text-end rounded-3 mb-5">
+              <h3 class="text-secondary-purple fw-light">
+                King | Client
+              </h3>
+              <p class="">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit eum ad, exercitationem, quo quod quos ab
+                laboriosam, non natus nesciunt molestiae nam iusto odit deleniti totam vel tempora minima amet.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="shadow p-5 col-5 rounded-3 mb-5">
+              <h3 class="text-secondary-purple fw-light">
+                Fyler | Freelancer
+              </h3>
+              <p class="">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit eum ad, exercitationem, quo quod quos ab
+                laboriosam, non natus nesciunt molestiae nam iusto odit deleniti totam vel tempora minima amet.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- about::end -->
+      <!-- contact::start -->
+      <section class="shadow p-1 rounded-3 mt-3">
+        <h2 class='text-center my-5 d-block fw-bold fs-1 text-main-purple fw-bold'>OUR TEAM</h2>
+        <div class="row">
+          <div class="text-center col-4">
+            <img src="assets/images/contact/ben.jpg" class="rounded-circle object-fit-cover" height="200px" width="200px" alt="">
+            <p class="m-0 p-1">Bennart Dem Gunawan</p>
+            <p>162021021</p>
+          </div>
+          <div class="text-center col-4">
+            <img src="assets/images/contact/atha.png" class="rounded-circle object-fit-cover" height="200px" width="200px" alt="">
+            <p class="m-0 p-1">Hasnaura Atha</p>
+            <p>162021028</p>
+          </div>
+          <div class="text-center col-4">
+            <img src="assets/images/contact/haikal.jpg" class="rounded-circle object-fit-cover" height="200px" width="200px" alt="">
+            <p class="m-0 p-1">Muhammad Haikal</p>
+            <p>162021029</p>
           </div>
         </div>
       </section>
@@ -112,7 +174,7 @@ if (isset($_SESSION['logged_in'])) {
     </div>
   </div>
   <!-- Modal Register Pick End -->
-  <footer class="pt-5 bg-nearly-white">
+  <footer class="">
     <div class="pt-5">
       <div class="container-fluid bg-dark p-0">
         <div class="container">
@@ -161,13 +223,14 @@ if (isset($_SESSION['logged_in'])) {
           </div>
         </div>
         <div class="bg-secondary-purple text-center p-2">
-          <p class="text-uppercase fw-semibold m-0" style="font-size: small;">Pleasure in the job puts perfection in the work | Aristotle</p>
+          <p class="text-uppercase fw-semibold m-0" style="font-size: small;">Pleasure in the job puts perfection in the
+            work | Aristotle</p>
           <p class="m-0" style="font-size: x-small;">&copy;2023 | FYLUM COMPANY | ALL RIGHT RESERVED</p>
         </div>
       </div>
     </div>
   </footer>
-  
+
   <script src="bootstrap/js/bootstrap.js"></script>
   <script src="bootstrap/js/script.js"></script>
 </body>

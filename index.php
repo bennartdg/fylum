@@ -4,11 +4,14 @@ include('server/connection.php');
 
 if (isset($_SESSION['logged_in'])) {
   if ($_SESSION['account_level'] == 'ancient') {
-    header('location: ancients/index.php');
+    $profile_photo = 'assets/images/icons/fy_main.png';
+    $src = 'ancients/';
   } else if ($_SESSION['account_level'] == 'fyler') {
-    header('location: fylers/index.php');
+    $profile_photo = 'assets/images/profiles/fylers/' . $_SESSION['fyler_photo'];
+    $src = 'fylers/';
   } else {
-    header('location: kingdoms/index.php');
+    $profile_photo = 'assets/images/profiles/kings/' . $_SESSION['king_photo'];
+    $src = 'kingdoms/';
   }
 }
 ?>
@@ -29,21 +32,29 @@ if (isset($_SESSION['logged_in'])) {
   <title>FyLum</title>
 </head>
 
-<body class="bg-main-light">
+<body class="bg-main-purple">
   <header>
     <nav class="navbar p-0 fixed-top nav-transparent">
       <div class="container-fluid w-75 py-2">
         <a class="navbar-brand" href="">
           <img src="assets/images/icons/fylum.png" height="30px" alt="">
         </a>
-        <div class="fs-5">
-          <a class="link-secondary-purple mx-3" href="login.php">Login</a>
-          <a class="link-purple" href="" data-bs-toggle="modal" data-bs-target="#modalRegisterPick">Register</a>
-        </div>
+        <?php if (!isset($_SESSION['logged_in'])) { ?>
+          <div class="fs-5">
+            <a class="link-secondary-purple mx-3" href="login.php">Login</a>
+            <a class="link-purple" href="" data-bs-toggle="modal" data-bs-target="#modalRegisterPick">Register</a>
+          </div>
+        <?php } else { ?>
+          <div class="me-3">
+            <a href="<?= $src ?>">
+              <img class="object-fit-cover rounded-circle" src="<?= $profile_photo ?>" alt="" width="40px" height="40px">
+            </a>
+          </div>
+        <?php } ?>
       </div>
     </nav>
   </header>
-  <main>
+  <main class="bg-nearly-white">
     <div class="container-fluid p-0 m-0">
       <img id="1" class="object-fit-cover p-0" src="assets/images/backgrounds/laptop.jpg" height="800px" width="100%" alt="">
       <div class="position-absolute w-25 top-50 end-0">
@@ -78,7 +89,6 @@ if (isset($_SESSION['logged_in'])) {
               </div>
             </div>
           </div>
-
           <div class="c-scale col-lg-4 col-sm-4 p-2">
             <div class="d-flex flex-row bg-light shadow text-dark align-items-center text-center rounded-3">
               <div class="w-50">
@@ -95,99 +105,101 @@ if (isset($_SESSION['logged_in'])) {
       </section>
     </div>
     <!-- about::start -->
-    <div class="container-sm mt-5">
-      <section id="2" class='row align-content-center justify-content-center gy-5 my-n5' style="margin-top: 7.4em;">
-        <h2 class='text-center my-5 d-block fw-bold fs-1 text-main-purple fw-bold'>ABOUT</h2>
-        <div class="row gy-3">
-          <div class="row justify-content-end">
-            <div class="shadow p-5 text-center rounded-3 mb-5">
+    <div class="bg-nearly-white">
+      <div class="container-fluid w-75 mt-5 pb-5 bg-nearly-white text-dark">
+        <section id="2" class='row align-content-center justify-content-center gy-5 mt-5 pt-5' style="margin-top: 7.4em;">
+          <h2 class='text-center my-5 d-block fs-1 text-main-purple fw-bold'>ABOUT</h2>
+          <div class="row gy-3">
+            <div class="row justify-content-end">
+              <div class="shadow p-5 text-center rounded-3 mb-5">
+                <h3 class="text-main-purple fw-bold">
+                  Description
+                </h3>
+                <p class="">
+                  FyLum is a platform for freelancers to find projects and people/companies that need services from
+                  freelancers depending on their needs.
+                </p>
+              </div>
+            </div>
+            <div class="row justify-content-end">
+              <div class="shadow p-5 text-center rounded-3 mb-5">
+                <h3 class="text-main-purple fw-bold">
+                  Philosophies
+                </h3>
+                <p class="">
+                  FyLum from the word Phylum/Phylon is the level of classification or taxonomic rank below the kingdom and
+                  above the class.
+
+                  Inspired by a group of animals on a level, where the Phylum is below the Kingdom level. Phylum describes
+                  a group of people who have the freedom to seek and find clients to do work. Just like animals that live
+                  freely to find food and survive.
+
+                  Kingdom where the kingdom describes a client/company that has greater value and requires the services of
+                  a person/group of freelancers.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- about::end -->
+        <!-- actors::start -->
+        <section id="3" class='row align-content-center justify-content-center gy-5'>
+          <h2 class='text-center my-5 d-block fw-bold fs-1 text-main-purple fw-bold'>ACTORS</h2>
+          <div class="row">
+            <div class="shadow p-5 col-5 rounded-3 mb-5">
               <h3 class="text-main-purple fw-bold">
-                Description
+                Ancient | Admin
               </h3>
               <p class="">
-                FyLum is a platform for freelancers to find projects and people/companies that need services from
-                freelancers depending on their needs.
+                Ancient/admin is a person or user who manages all transactions and data in Fylum.
               </p>
             </div>
           </div>
           <div class="row justify-content-end">
-            <div class="shadow p-5 text-center rounded-3 mb-5">
+            <div class="shadow p-5 col-5 text-end rounded-3 mb-5">
               <h3 class="text-main-purple fw-bold">
-                Philosophies
+                King | Client
               </h3>
               <p class="">
-                FyLum from the word Phylum/Phylon is the level of classification or taxonomic rank below the kingdom and
-                above the class.
-
-                Inspired by a group of animals on a level, where the Phylum is below the Kingdom level. Phylum describes
-                a group of people who have the freedom to seek and find clients to do work. Just like animals that live
-                freely to find food and survive.
-
-                Kingdom where the kingdom describes a client/company that has greater value and requires the services of
-                a person/group of freelancers.
+                King/Kingdom is a representation of person or company that requires services from fylers.
               </p>
             </div>
           </div>
-        </div>
-      </section>
-      <!-- about::end -->
-      <!-- actors::start -->
-      <section id="3" class='row align-content-center justify-content-center gy-5' style="margin-top: 3em;">
-        <h2 class='text-center my-5 d-block fw-bold fs-1 text-main-purple fw-bold'>ACTORS</h2>
-        <div class="row">
-          <div class="shadow p-5 col-5 rounded-3 mb-5">
-            <h3 class="text-main-purple fw-bold">
-              Ancient | Admin
-            </h3>
-            <p class="">
-              Ancient/admin is a person or user who manages all transactions and data in Fylum.
-            </p>
+          <div class="row">
+            <div class="shadow p-5 col-5 rounded-3 mb-5">
+              <h3 class="text-main-purple fw-bold">
+                Fyler | Freelancer
+              </h3>
+              <p class="">
+                Flyers are a person or a team who have the ability and need a job/project.
+              </p>
+            </div>
           </div>
-        </div>
-        <div class="row justify-content-end">
-          <div class="shadow p-5 col-5 text-end rounded-3 mb-5">
-            <h3 class="text-main-purple fw-bold">
-              King | Client
-            </h3>
-            <p class="">
-              King/Kingdom is a representation of person or company that requires services from fylers.
-            </p>
+        </section>
+        <!-- actors::end -->
+        <!-- contact::start -->
+        <h2 id="4" class='text-center my-5 d-block fw-bold fs-1 text-main-purple fw-bold'>OUR TEAM</h2>
+        <section class="shadow rounded-3 mt-3">
+          <div class="row p-5">
+            <div class="text-center col-4">
+              <img src="assets/images/contact/ben.jpg" class="rounded-circle object-fit-cover" height="200px" width="200px" alt="">
+              <p class="m-0 p-1 fs-5">Bennart Dem Gunawan</p>
+              <p>162021021</p>
+            </div>
+            <div class="text-center col-4">
+              <img src="assets/images/contact/atha.png" class="rounded-circle object-fit-cover" height="200px" width="200px" alt="">
+              <p class="m-0 p-1 fs-5">Hasnaura Atha</p>
+              <p>162021028</p>
+            </div>
+            <div class="text-center col-4">
+              <img src="assets/images/contact/haikal.jpg" class="rounded-circle object-fit-cover" height="200px" width="200px" alt="">
+              <p class="m-0 p-1 fs-5">Muhammad Haikal</p>
+              <p>162021029</p>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="shadow p-5 col-5 rounded-3 mb-5">
-            <h3 class="text-main-purple fw-bold">
-              Fyler | Freelancer
-            </h3>
-            <p class="">
-              Flyers are a person or a team who have the ability and need a job/project.
-            </p>
-          </div>
-        </div>
-      </section>
-      <!-- actors::end -->
-      <!-- contact::start -->
-      <h2 id="4" class='text-center my-5 d-block fw-bold fs-1 text-main-purple fw-bold'>OUR TEAM</h2>
-      <section class="shadow rounded-3 mt-3">
-        <div class="row p-5">
-          <div class="text-center col-4">
-            <img src="assets/images/contact/ben.jpg" class="rounded-circle object-fit-cover" height="200px" width="200px" alt="">
-            <p class="m-0 p-1 fs-5">Bennart Dem Gunawan</p>
-            <p>162021021</p>
-          </div>
-          <div class="text-center col-4">
-            <img src="assets/images/contact/atha.png" class="rounded-circle object-fit-cover" height="200px" width="200px" alt="">
-            <p class="m-0 p-1 fs-5">Hasnaura Atha</p>
-            <p>162021028</p>
-          </div>
-          <div class="text-center col-4">
-            <img src="assets/images/contact/haikal.jpg" class="rounded-circle object-fit-cover" height="200px" width="200px" alt="">
-            <p class="m-0 p-1 fs-5">Muhammad Haikal</p>
-            <p>162021029</p>
-          </div>
-        </div>
-      </section>
-      <!-- contact::end -->
+        </section>
+        <!-- contact::end -->
+      </div>
     </div>
   </main>
 
@@ -208,8 +220,8 @@ if (isset($_SESSION['logged_in'])) {
     </div>
   </div>
   <!-- Modal Register Pick End -->
-  <footer class="">
-    <div class="pt-5">
+  <footer>
+    <div>
       <div class="container-fluid bg-dark p-0">
         <div class="container">
           <div class="d-flex justify-content-center p-5">

@@ -31,13 +31,13 @@
         </div>
         <div class="pb-5 d-flex justify-content-center">
           <div class="d-flex justify-content-evenly" style="width: 400px;">
-            <a href="#1" class="link-light-purple">HOME</a>
+            <a href="../index.php#1" class="link-light-purple">HOME</a>
             <span>|</span>
-            <a href="#2" class="link-light-purple">ABOUT</a>
+            <a href="../index.php#2" class="link-light-purple">ABOUT</a>
             <span>|</span>
-            <a href="#3" class="link-light-purple">ACTORS</a>
+            <a href="../index.php#3" class="link-light-purple">ACTORS</a>
             <span>|</span>
-            <a href="#4" class="link-light-purple">OUR TEAM</a>
+            <a href="../index.php#4" class="link-light-purple">OUR TEAM</a>
           </div>
         </div>
         <div class="text-center pb-5">

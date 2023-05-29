@@ -21,9 +21,6 @@ $r_anceint = mysqli_query($conn, $q_ancient);
 $q_fyler = "UPDATE fylers SET fyler_balance = fyler_balance + '$project_fee', fyler_project = fyler_project + 1 WHERE fyler_id = '$fyler_id'";
 $r_fyler = mysqli_query($conn, $q_fyler);
 
-$q_king = "UPDATE kings SET king_balance = king_balance - '$project_cost' WHERE king_id = '$king_id'";
-$r_king = mysqli_query($conn, $q_king);
-
 $path = "../assets/images/projects/" . basename($_FILES['project_deliv']['name']);
 
 $project_deliv = $_FILES['project_deliv']['name'];
@@ -31,7 +28,7 @@ $project_deliv = $_FILES['project_deliv']['name'];
 $q_project = "UPDATE projects SET project_status = 'finished', project_deliv = '$project_deliv' WHERE project_id = '$project_id'";
 $r_project = mysqli_query($conn, $q_project);
 
-if ($r_project && $r_anceint && $r_king && $r_fyler) {
+if ($r_project && $r_anceint && $r_fyler) {
   if (move_uploaded_file($_FILES['project_deliv']['tmp_name'], $path)) {
     header('location: index.php?success=1&message=Project Finished');
   }

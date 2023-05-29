@@ -4,6 +4,10 @@ include('../server/connection.php');
 
 if (!isset($_SESSION['logged_in'])) {
   header('location: ../login.php');
+} else {
+  if (!isset($_SESSION['fyler_id'])) {
+    header('location: ../login.php');
+  }
 }
 
 if (isset($_SESSION['logged_in'])) {
@@ -72,7 +76,7 @@ $r_projects = mysqli_query($conn, $q_projects);
 <body class="bg-main-purple">
   <main>
     <div class="position-absolute top-0 start-50 translate-middle-x text-center mt-3">
-      <a href="index.php">
+      <a href="../index.php">
         <img src="../assets/images/icons/fylum.png" alt="" height="40px">
       </a>
     </div>
@@ -202,7 +206,7 @@ $r_projects = mysqli_query($conn, $q_projects);
                         </div>
                         <?php if ($row['project_status'] == 'unread') { ?>
                           <div class="w-100 text-end pe-3">
-                            <a class="btn btn-light-purple" href="actionDeclineProject.php?project_id=<?= $row['project_id'] ?>">Decline</a>
+                            <a class="btn btn-light-purple" href="actionDeclineProject.php?project_id=<?= $row['project_id'] ?>&project_cost=<?= $row['project_cost'] ?>&project_cost=<?= $row['project_cost'] ?>">Decline</a>
                             <a class="btn btn-purple" href="actionAcceptProject.php?project_id=<?= $row['project_id'] ?>">Accept</a>
                           </div>
                         <?php } else if ($row['project_status'] == 'ongoing') { ?>
@@ -218,7 +222,7 @@ $r_projects = mysqli_query($conn, $q_projects);
                                 <p class="fw-light m-0">If you choose not to proceed with this project, please select "Decline."</p>
                               </div>
                               <div class="w-25">
-                                <a class="btn btn-light-purple" href="actionDeclineProject.php?project_id=<?= $row['project_id'] ?>">Decline</a>
+                                <a class="btn btn-light-purple" href="actionDeclineProject.php?project_id=<?= $row['project_id'] ?>&project_cost=<?= $row['project_cost'] ?>">Decline</a>
                               </div>
                             </div>
                           </div>

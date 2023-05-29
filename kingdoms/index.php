@@ -4,6 +4,10 @@ include('../server/connection.php');
 
 if (!isset($_SESSION['logged_in'])) {
   header('location: ../login.php');
+} else {
+  if (!isset($_SESSION['king_id'])) {
+    header('location: ../login.php');
+  }
 }
 
 if (isset($_SESSION['logged_in'])) {
@@ -70,7 +74,7 @@ $r_projects = mysqli_query($conn, $q_projects);
 <body class="bg-main-purple">
   <main>
     <div class="position-absolute top-0 start-50 translate-middle-x text-center mt-3">
-      <a href="index.php">
+      <a href="../index.php">
         <img src="../assets/images/icons/fylum.png" alt="" height="40px">
       </a>
     </div>
@@ -96,12 +100,12 @@ $r_projects = mysqli_query($conn, $q_projects);
             </div>
             <!-- Alert Start -->
             <?php if (isset($_GET["success"]) && $_GET["success"] == true) { ?>
-              <div id="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+              <div id="alert" class="alert alert-success alert-dismissible fade show me-3" role="alert">
                 <?php echo $_GET['message'] ?>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
             <?php } else if (isset($_GET['success']) && $_GET['success'] == false) { ?>
-              <div id="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+              <div id="alert" class="alert alert-danger alert-dismissible fade show me-3" role="alert">
                 <?php echo $_GET['error'] ?>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
@@ -234,7 +238,7 @@ $r_projects = mysqli_query($conn, $q_projects);
                             </div>
                             <div class="mb-3">
                               <label class="mb-2" for="">Project Cost</label>
-                              <input class="form-control" type="text" name="project_cost" required>
+                              <input class="form-control" type="number" name="project_cost" min="10000" max="<?= $king_balance ?>" required>
                             </div>
                           </div>
                         </div>
@@ -359,7 +363,7 @@ $r_projects = mysqli_query($conn, $q_projects);
                           </div>
                           <?php if ($row['project_status'] == 'unread') { ?>
                             <div class="w-75 px-3 text-end">
-                              <a class="btn btn-light-purple" href="actionDeclineProject.php?project_id=<?= $row['project_id'] ?>">Decline</a>
+                              <a class="btn btn-light-purple" href="actionDeclineProject.php?project_id=<?= $row['project_id'] ?>&project_cost=<?= $row['project_cost'] ?>">Decline</a>
                             </div>
                           <?php } else if ($row['project_status'] == 'ongoing') { ?>
                             <div class="d-flex px-3">
@@ -368,7 +372,7 @@ $r_projects = mysqli_query($conn, $q_projects);
                                   <p class="fw-light m-0">If you choose not to proceed with this project, please select "Decline."</p>
                                 </div>
                                 <div class="ms-2">
-                                  <a class="btn btn-light-purple" href="actionDeclineProject.php?project_id=<?= $row['project_id'] ?>">Decline</a>
+                                  <a class="btn btn-light-purple" href="actionDeclineProject.php?project_id=<?= $row['project_id'] ?>&project_cost=<?= $row['project_cost'] ?>">Decline</a>
                                 </div>
                               </div>
                             </div>

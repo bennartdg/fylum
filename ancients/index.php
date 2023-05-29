@@ -4,6 +4,10 @@ include('../server/connection.php');
 
 if (!isset($_SESSION['logged_in'])) {
   header('location: ../login.php');
+} else {
+  if (!isset($_SESSION['ancient_id'])) {
+    header('location: ../login.php');
+  }
 }
 
 if (isset($_SESSION['logged_in'])) {
@@ -220,7 +224,7 @@ $total_king = mysqli_num_rows($r_king_all);
                   <th scope="col">Address</th>
                 <?php } else { ?>
                   <th scope="col">Description</th>
-                  <th scope="col">Address</th>
+                  <th scope="col">Balance</th>
                   <th scope="col">Action</th>
                 <?php } ?>
               </thead>
@@ -256,11 +260,11 @@ $total_king = mysqli_num_rows($r_king_all);
                         <?= $row['king_desc'] ?>
                       </td>
                       <td>
-                        <?= $row['king_add'] ?>
+                        <?= 'Rp.' . number_format($row['king_balance']) . '.00'  ?>
                       </td>
                       <td>
-                        <a class="btn btn-purple" href="" data-bs-toggle="modal" data-bs-target="#modalTopup<?= $row['king_id'] ?>">
-                          <i class="fa-solid fa-wallet"></i>
+                        <a class="link-purple" href="" data-bs-toggle="modal" data-bs-target="#modalTopup<?= $row['king_id'] ?>">
+                          <i class="fa-solid fa-wallet fa-lg"></i>
                         </a>
                       </td>
                     </tr>
@@ -285,13 +289,16 @@ $total_king = mysqli_num_rows($r_king_all);
                                     <p class="m-0">#<?= $row['king_id'] ?></p>
                                     <p class="m-0 fs-4"><?= $row['king_name'] ?></p>
                                     <p class="m-0 text-secondary"><?= $row['account_email'] ?></p>
+                                    <p class="m-0 fw-bold text-main-purple"><?= 'Rp.' . number_format($row['king_balance']) . '.00' ?></p>
                                   </div>
                                 </div>
                                 <form action="actionTopup.php?king_id=<?= $row['king_id'] ?>" method="POST">
-                                  <div class="mt-3 d-flex">
-                                    <input class="form-control" type="text" name="king_balance" placeholder="Rp.">
+                                  <label class="mt-3" for="">Insert Nominal</label>
+                                  <div class="d-flex">
+                                    <input class="form-control" type="number" name="king_balance" placeholder="Rp." min="100000" max="1000000000" step="100000">
                                     <input class="btn btn-purple" type="submit" value="Topup">
                                   </div>
+                                  <label class="m-0 text-secondary" for="">(Rp.10,000 - Rp.1,000,000,000)</label>
                                 </form>
                               </div>
                             </div>

@@ -377,7 +377,11 @@ $r_projects = mysqli_query($conn, $q_projects);
                               </div>
                             </div>
                           <?php } else if ($row['project_status'] == 'finished') { ?>
-                            <div class="w-100 text-center">
+                            <div class="w-100 text-center d-flex flex-column align-items-center">
+                              <div class="p-2 mb-3 shadow rounded-3 bg-secondary-purple" style="width: max-content;">
+                                <h6>Project Delivery</h6>
+                                <img class="object-fit-cover rounded-3" src="../assets/images/projects/<?= $row['project_deliv'] ?>" alt="" width="300px" height="100px">
+                              </div>
                               <p class="fw-bold">This Project is finished</p>
                             </div>
                           <?php } else { ?>

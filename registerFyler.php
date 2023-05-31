@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+if (isset($_SESSION['logged_in'])) {
+  if ($_SESSION['account_level'] == 'ancient') {
+    header('location: ancients/index.php');
+  } else if ($_SESSION['account_level'] == 'fyler') {
+    header('location: fylers/index.php');
+  } else {
+    header('location: kingdoms/index.php');
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

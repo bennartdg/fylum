@@ -26,7 +26,7 @@ if (isset($_SESSION['logged_in'])) {
   <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://kit.fontawesome.com/61f8d3e11d.js" crossorigin="anonymous"></script>
-  <title>FyLum</title>
+  <title>Register Fyler</title>
 </head>
 
 <body class="bg-main-purple">

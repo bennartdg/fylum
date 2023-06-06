@@ -189,7 +189,7 @@ if (isset($_SESSION['logged_in'])) {
             <div class="text-center col-4">
               <img src="assets/images/contact/atha.png" class="rounded-circle object-fit-cover" height="200px" width="200px" alt="">
               <p class="m-0 p-1 fs-5">Hasnaura Atha</p>
-              <p>162021028</p>
+              <p>162021030</p>
             </div>
             <div class="text-center col-4">
               <img src="assets/images/contact/haikal.jpg" class="rounded-circle object-fit-cover" height="200px" width="200px" alt="">

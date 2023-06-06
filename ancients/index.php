@@ -298,7 +298,7 @@ $total_king = mysqli_num_rows($r_king_all);
                                     <input class="form-control" type="number" name="king_balance" placeholder="Rp." min="100000" max="1000000000" step="100000">
                                     <input class="btn btn-purple" type="submit" value="Topup">
                                   </div>
-                                  <label class="m-0 text-secondary" for="">(Rp.10,000 - Rp.1,000,000,000)</label>
+                                  <label class="m-0 text-secondary" for="">(Rp.100,000 - Rp.1,000,000,000)</label>
                                 </form>
                               </div>
                             </div>
